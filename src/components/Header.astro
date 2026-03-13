@@ -1,22 +1,59 @@
 ---
 ---
 
-<header
-  class="sticky top-0 z-40 w-full border-b border-[var(--color-border-subtle)] bg-[var(--color-surface-0)]/80 backdrop-blur-md"
-  role="banner"
->
-  <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
-    <a
-      href="#hero"
-      class="font-bold tracking-tight text-white hover:text-[var(--color-accent-hover)] transition-colors"
-    >
+<header id="site-header" class="sticky top-0 z-40 backdrop-blur-md bg-[linear-gradient(180deg,rgba(4,8,22,0.9)_0%,rgba(4,8,22,0.7)_100%)] border-b border-[var(--color-border-subtle)] transition-shadow duration-300">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="font-display text-xl tracking-tight text-white hover:text-[var(--color-accent)] transition-colors">
       DEVS
     </a>
-    <a
-      href="#notify"
-      class="rounded-lg border border-[var(--color-accent)]/50 bg-[var(--color-accent-ghost)] px-4 py-2 text-sm font-semibold text-[var(--color-accent)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-subtle)] transition-colors"
-    >
+    
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#what-we-teach" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Curriculum</a>
+      <a href="#how-it-works" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Process</a>
+      <a href="#lab" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Environment</a>
+      <a href="#pricing" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Pricing</a>
+    </nav>
+
+    <a href="#notify" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg border border-[var(--color-accent)]/50 bg-[var(--color-accent-ghost)] text-[var(--color-accent)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-subtle)] transition-all">
       Join early access <span aria-hidden="true">&rarr;</span>
     </a>
   </div>
 </header>
+
+<style>
+  header {
+    animation: slideDownIn 400ms ease;
+  }
+
+  header.is-scrolled {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  @keyframes slideDownIn {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    header {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById("site-header");
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>

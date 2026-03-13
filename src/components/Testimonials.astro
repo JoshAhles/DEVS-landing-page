@@ -1,0 +1,118 @@
+---
+---
+
+<div>
+  <div class="text-center mb-12">
+    <span class="eyebrow">The path forward</span>
+    <h2 class="mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-white">
+      What early students will say
+    </h2>
+    <p class="mt-4 text-lg copy-muted max-w-3xl mx-auto">
+      These are the outcomes we're building toward. Help shape DEVS and become part of our founding cohort.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    <!-- Expected Outcome 1 -->
+    <div class="surface-card p-8 fade-in-up" style="animation-delay: 100ms">
+      <div class="flex items-center justify-center gap-1 mb-4">
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+      </div>
+      
+      <blockquote class="mb-6">
+        <p class="text-base copy-muted italic">
+          "I understand Git, code review, and sprint workflows—skills my bootcamp glossed over."
+        </p>
+      </blockquote>
+
+      <div class="pt-4 border-t border-[var(--color-border)]">
+        <p class="text-xs copy-subtle font-mono">Expected outcome: Git mastery</p>
+      </div>
+    </div>
+
+    <!-- Expected Outcome 2 -->
+    <div class="surface-card p-8 fade-in-up" style="animation-delay: 150ms">
+      <div class="flex items-center justify-center gap-1 mb-4">
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+      </div>
+      
+      <blockquote class="mb-6">
+        <p class="text-base copy-muted italic">
+          "I have real projects to discuss in interviews, not just tutorials I followed."
+        </p>
+      </blockquote>
+
+      <div class="pt-4 border-t border-[var(--color-border)]">
+        <p class="text-xs copy-subtle font-mono">Expected outcome: Portfolio-ready work</p>
+      </div>
+    </div>
+
+    <!-- Expected Outcome 3 -->
+    <div class="surface-card p-8 fade-in-up" style="animation-delay: 200ms">
+      <div class="flex items-center justify-center gap-1 mb-4">
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+        <span class="text-[var(--color-accent-2)]">★</span>
+      </div>
+      
+      <blockquote class="mb-6">
+        <p class="text-base copy-muted italic">
+          "I'm confident in standups, code reviews, and shipping features with a team."
+        </p>
+      </blockquote>
+
+      <div class="pt-4 border-t border-[var(--color-border)]">
+        <p class="text-xs copy-subtle font-mono">Expected outcome: Team-ready mindset</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beta CTA -->
+  <div class="mt-16 text-center">
+    <div class="inline-block surface-card p-8 max-w-2xl border-2 border-[var(--color-accent-2)]/30">
+      <p class="text-lg font-semibold text-white mb-4">
+        Be a founding member
+      </p>
+      <p class="copy-muted mb-6">
+        Join the beta cohort and help shape DEVS. You'll get early access, direct feedback opportunities, and lifetime credit.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#notify" class="btn-primary cta-glow">
+          Join beta program <span aria-hidden="true">&rarr;</span>
+        </a>
+        <button class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-[var(--color-accent)]/50 text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 transition-colors font-semibold">
+          Learn more about beta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Animate outcome cards on scroll
+  const cards = document.querySelectorAll('[class*="fade-in-up"]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    observer.observe(card);
+  });
+</script>

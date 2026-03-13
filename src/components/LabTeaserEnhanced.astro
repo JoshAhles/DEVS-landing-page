@@ -1,0 +1,86 @@
+---
+---
+
+<div class="text-center md:text-right md:max-w-4xl md:ml-auto">
+  <span class="eyebrow">Environment</span>
+  <h2 class="mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-white">
+    Train in a production-style workspace
+  </h2>
+  <p class="mt-4 text-lg copy-muted max-w-3xl mx-auto md:mx-0 md:ml-auto leading-relaxed">
+    Work in a browser-based setup that mirrors real engineering flow: terminal, branches, tests, pull requests, and iteration.
+  </p>
+  
+  <div class="mt-10 mx-auto md:ml-auto max-w-3xl surface-card terminal-shell p-8 text-left font-mono text-sm copy-subtle fade-in-up">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="w-3 h-3 rounded-full bg-red-500/80 transition-all hover:bg-red-500" />
+      <span class="w-3 h-3 rounded-full bg-yellow-500/80 transition-all hover:bg-yellow-500" />
+      <span class="w-3 h-3 rounded-full bg-green-500/80 transition-all hover:bg-green-500" />
+    </div>
+    
+    <div class="space-y-2 min-h-24">
+      <div class="copy-muted">
+        <span class="text-[var(--color-accent)]">$</span> git checkout -b
+        feature/auth-flow<br />
+      </div>
+      <div class="copy-muted fade-in-up" style="animation-delay: 200ms">
+        <span class="text-[var(--color-accent)]">$</span> npm run test<br />
+      </div>
+      <div class="copy-muted fade-in-up" style="animation-delay: 400ms">
+        <span class="text-[var(--color-accent)]">$</span> git commit -m "Add auth validation"<br />
+      </div>
+      <div class="copy-muted fade-in-up" style="animation-delay: 600ms">
+        <span class="text-[var(--color-accent)]">$</span> git push origin feature/auth-flow<br />
+      </div>
+      <div class="copy-subtle fade-in-up" style="animation-delay: 800ms">
+        Open PR → request review → iterate → merge<span class="terminal-cursor" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive hint -->
+  <p class="mt-8 text-xs copy-subtle italic">
+    ↳ Real terminal experience. No simulations.
+  </p>
+</div>
+
+<script>
+  // Animate terminal lines on scroll
+  const terminalLines = document.querySelectorAll('[class*="fade-in-up"]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  terminalLines.forEach(line => {
+    line.style.opacity = '0';
+    line.style.transform = 'translateY(10px)';
+    observer.observe(line);
+  });
+
+  // Add glow effect on terminal interaction
+  const terminal = document.querySelector('.terminal-shell');
+  terminal?.addEventListener('mouseenter', () => {
+    terminal.style.boxShadow = `
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 20px 50px rgba(45, 212, 255, 0.2),
+      0 0 0 1px rgba(45, 212, 255, 0.2)
+    `;
+  });
+
+  terminal?.addEventListener('mouseleave', () => {
+    terminal.style.boxShadow = `
+      inset 0 1px 0 rgba(255, 255, 255, 0.03),
+      0 12px 40px rgba(1, 8, 23, 0.45)
+    `;
+  });
+</script>
+
+<style>
+  .terminal-shell:hover {
+    transition: box-shadow 300ms ease;
+  }
+</style>

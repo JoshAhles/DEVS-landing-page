@@ -4,34 +4,85 @@ interface Props {
   dark?: boolean;
   narrow?: boolean;
   extraTopPadding?: boolean;
+  spacingVariant?: 'compact' | 'normal' | 'spacious' | 'extra';
+  parallax?: boolean;
+  accentColor?: 'cyan' | 'green';
+  bgVariant?: 'light' | 'dark' | 'gradient';
 }
 
-const { id, dark = false, narrow = false, extraTopPadding = false } = Astro.props;
+const { 
+  id, 
+  dark = false, 
+  narrow = false, 
+  extraTopPadding = false,
+  spacingVariant = 'normal',
+  parallax = false,
+  accentColor = 'cyan',
+  bgVariant = 'gradient'
+} = Astro.props;
+
+const spacingMap = {
+  compact: 'py-16 md:py-20',
+  normal: 'py-24 md:py-28',
+  spacious: 'py-32 md:py-40',
+  extra: 'py-40 md:py-48'
+};
+
+const spacing = extraTopPadding ? 'pt-32 pb-24 md:pt-36 md:pb-28' : spacingMap[spacingVariant];
+
+// Background variants with smooth gradient flows
+const bgGradients = {
+  light: 'bg-[linear-gradient(180deg,rgba(17,28,53,0.15)_0%,rgba(17,28,53,0.08)_40%,rgba(4,8,22,0)_100%)]',
+  dark: 'bg-[linear-gradient(180deg,rgba(11,19,39,0.52)_0%,rgba(11,19,39,0.32)_48%,rgba(4,8,22,0)_100%)]',
+  gradient: dark 
+    ? 'bg-[linear-gradient(180deg,rgba(11,19,39,0.48)_0%,rgba(11,19,39,0.28)_50%,rgba(4,8,22,0)_100%)]'
+    : 'bg-[linear-gradient(180deg,rgba(17,28,53,0.2)_0%,rgba(17,28,53,0.1)_45%,rgba(4,8,22,0)_100%)]'
+};
+
+// Accent radials for visual interest
+const accentRadials = {
+  cyan: "bg-[radial-gradient(circle_at_82%_18%,rgba(45,212,255,0.08),transparent_38%)]",
+  green: "bg-[radial-gradient(circle_at_82%_18%,rgba(0,245,180,0.07),transparent_38%)]"
+};
 ---
 
 <section
   id={id}
   class:list={[
-    "relative px-6 overflow-hidden",
-    extraTopPadding ? "pt-32 pb-24 md:pt-36 md:pb-28" : "py-24 md:py-28",
-    dark
-      ? "bg-[linear-gradient(180deg,rgba(11,19,39,0.48)_0%,rgba(11,19,39,0.3)_48%,rgba(4,8,22,0)_100%)]"
-      : "bg-[linear-gradient(180deg,rgba(17,28,53,0.2)_0%,rgba(17,28,53,0.1)_45%,rgba(4,8,22,0)_100%)]",
+    "relative px-6 overflow-hidden transition-all duration-500",
+    spacing,
+    bgGradients[bgVariant],
+    parallax && "parallax",
+    "section-flow"
   ]}
 >
+  <!-- Gradient flow overlay for smooth transitions -->
+  <div
+    class="absolute inset-0 pointer-events-none opacity-0 section-flow-overlay transition-opacity duration-700"
+    aria-hidden="true"
+  />
+
+  <!-- Accent radial glow -->
   <div
     class:list={[
       "absolute inset-0 pointer-events-none",
-      dark
-        ? "bg-[radial-gradient(circle_at_82%_18%,rgba(45,212,255,0.09),transparent_38%)]"
-        : "bg-[radial-gradient(circle_at_18%_10%,rgba(0,245,180,0.08),transparent_35%)]",
+      accentRadials[accentColor]
     ]}
     aria-hidden="true"
   />
+
+  <!-- Bottom fade to base surface -->
   <div
-    class="absolute inset-x-0 bottom-0 h-16 pointer-events-none bg-gradient-to-b from-transparent to-[var(--color-surface-0)]/20"
+    class="absolute inset-x-0 bottom-0 h-20 pointer-events-none bg-gradient-to-b from-transparent to-[var(--color-surface-0)]/15 transition-colors duration-500"
     aria-hidden="true"
   />
+
+  <!-- Top gradient divider (subtle connection to previous section) -->
+  <div
+    class="absolute inset-x-0 top-0 h-px pointer-events-none bg-gradient-to-r from-transparent via-[var(--color-border)]/30 to-transparent"
+    aria-hidden="true"
+  />
+
   <div class:list={["mx-auto relative z-10", narrow ? "max-w-2xl" : "max-w-5xl"]}>
     <slot />
   </div>

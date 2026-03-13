@@ -1,0 +1,118 @@
+---
+---
+
+<div>
+  <div class="text-center mb-12">
+    <span class="eyebrow">Your proof</span>
+    <h2 class="mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-white">
+      Build a portfolio employers actually want to see
+    </h2>
+    <p class="mt-4 text-lg copy-muted max-w-3xl mx-auto">
+      Every lab and project you complete becomes a real portfolio piece. By graduation, you'll have shipped features employers recognize and can discuss authentically in interviews.
+    </p>
+  </div>
+
+  <div class="space-y-6 max-w-3xl mx-auto">
+    <!-- Stage 1: Foundation -->
+    <div class="surface-card p-8 fade-in-up" style="animation-delay: 100ms">
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="flex-shrink-0">
+          <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-[var(--color-accent)]/20 to-[var(--color-accent-2)]/20 border border-[var(--color-accent)]/30 flex items-center justify-center">
+            <span class="text-2xl font-display text-[var(--color-accent)]">1</span>
+          </div>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-semibold text-white mb-2">Learn with hands-on labs</h3>
+          <p class="copy-muted mb-3">
+            Build working code from day one. Each lab teaches core engineering fundamentals through real problems—not tutorials or abstract theory. You'll practice Git workflows, code review, and the tools professional teams use every day.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="value-pill">Real code</span>
+            <span class="value-pill">Professional tools</span>
+            <span class="value-pill">Hands-on practice</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 2: Real Applications -->
+    <div class="surface-card p-8 fade-in-up" style="animation-delay: 150ms">
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="flex-shrink-0">
+          <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-[var(--color-accent-2)]/20 to-[var(--color-accent)]/20 border border-[var(--color-accent-2)]/30 flex items-center justify-center">
+            <span class="text-2xl font-display text-[var(--color-accent-2)]">2</span>
+          </div>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-semibold text-white mb-2">Build complete features</h3>
+          <p class="copy-muted mb-3">
+            Progress to real applications. Work in feature branches, submit pull requests, iterate based on feedback, and ship complete features. You'll experience the full development cycle—design, implementation, testing, code review, and deployment.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="value-pill">Full development cycle</span>
+            <span class="value-pill">Code review feedback</span>
+            <span class="value-pill">Shipping to production</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 3: Portfolio Ready -->
+    <div class="surface-card p-8 fade-in-up" style="animation-delay: 200ms">
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="flex-shrink-0">
+          <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-[var(--color-accent)]/20 to-[var(--color-accent-2)]/20 border border-[var(--color-accent-2)]/30 flex items-center justify-center">
+            <span class="text-2xl font-display text-[var(--color-accent-2)]">✓</span>
+          </div>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-semibold text-white mb-2">Portfolio ready for interviews</h3>
+          <p class="copy-muted mb-3">
+            Every project you complete becomes part of your GitHub portfolio. With clear documentation, deployment links, and decision logs, you can speak with confidence about your work. You don't just list technologies—you explain the tradeoffs and why you chose them.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="value-pill">GitHub presence</span>
+            <span class="value-pill">Shipped code</span>
+            <span class="value-pill">Interview talking points</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interview preparation callout -->
+  <div class="mt-12 max-w-3xl mx-auto surface-card p-8 border-l-4 border-[var(--color-accent-2)]">
+    <div class="flex flex-col sm:flex-row gap-6">
+      <div class="flex-shrink-0">
+        <div class="text-3xl">💬</div>
+      </div>
+      <div class="flex-1">
+        <h3 class="text-lg font-semibold text-white mb-2">In interviews, you'll speak with real confidence:</h3>
+        <p class="copy-muted italic mb-3">
+          "I built this feature to solve [specific problem]. I chose [technology] because [tradeoffs]. I'd approach this differently now because I learned [lesson]."
+        </p>
+        <p class="text-sm copy-subtle">
+          Not: "I did tutorials." Not: "I learned from courses." You have shipped code and real decision-making experience to discuss.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const cards = document.querySelectorAll('[class*="fade-in-up"]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    observer.observe(card);
+  });
+</script>
