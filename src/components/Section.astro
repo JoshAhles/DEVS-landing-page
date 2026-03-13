@@ -1,0 +1,38 @@
+---
+interface Props {
+  id: string;
+  dark?: boolean;
+  narrow?: boolean;
+  extraTopPadding?: boolean;
+}
+
+const { id, dark = false, narrow = false, extraTopPadding = false } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    "relative px-6 overflow-hidden",
+    extraTopPadding ? "pt-32 pb-24 md:pt-36 md:pb-28" : "py-24 md:py-28",
+    dark
+      ? "bg-[linear-gradient(180deg,rgba(11,19,39,0.48)_0%,rgba(11,19,39,0.3)_48%,rgba(4,8,22,0)_100%)]"
+      : "bg-[linear-gradient(180deg,rgba(17,28,53,0.2)_0%,rgba(17,28,53,0.1)_45%,rgba(4,8,22,0)_100%)]",
+  ]}
+>
+  <div
+    class:list={[
+      "absolute inset-0 pointer-events-none",
+      dark
+        ? "bg-[radial-gradient(circle_at_82%_18%,rgba(45,212,255,0.09),transparent_38%)]"
+        : "bg-[radial-gradient(circle_at_18%_10%,rgba(0,245,180,0.08),transparent_35%)]",
+    ]}
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-x-0 bottom-0 h-16 pointer-events-none bg-gradient-to-b from-transparent to-[var(--color-surface-0)]/20"
+    aria-hidden="true"
+  />
+  <div class:list={["mx-auto relative z-10", narrow ? "max-w-2xl" : "max-w-5xl"]}>
+    <slot />
+  </div>
+</section>

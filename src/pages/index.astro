@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import HeroSupport from "../components/HeroSupport.astro";
+import Section from "../components/Section.astro";
+import NotVibeSection from "../components/NotVibeSection.astro";
+import WhyDEVS from "../components/WhyDEVS.astro";
+import WhatWeTeach from "../components/WhatWeTeach.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import LabTeaser from "../components/LabTeaser.astro";
+import Pricing from "../components/Pricing.astro";
+import CtaSection from "../components/CtaSection.astro";
+---
+
+<Layout title="DEVS | Beginner to team-ready software developer training">
+  <main id="main">
+    <Hero />
+
+    <Section id="hero-support" narrow extraTopPadding>
+      <HeroSupport />
+    </Section>
+
+    <Section id="not-vibe" dark>
+      <NotVibeSection />
+    </Section>
+
+    <Section id="why-what" dark>
+      <div id="why-devs">
+        <WhyDEVS />
+      </div>
+      <div id="what-we-teach" class="mt-20 md:mt-24">
+        <WhatWeTeach />
+      </div>
+    </Section>
+
+    <Section id="how-it-works">
+      <HowItWorks />
+    </Section>
+
+    <Section id="lab" dark>
+      <LabTeaser />
+    </Section>
+
+    <Section id="pricing">
+      <Pricing />
+    </Section>
+
+    <Section id="cta-section" dark>
+      <CtaSection />
+    </Section>
+  </main>
+</Layout>

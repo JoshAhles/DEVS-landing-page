@@ -1,0 +1,171 @@
+---
+---
+
+<div id="cta" class="text-center">
+  <span class="eyebrow">Next step</span>
+  <h2 class="mt-5 text-2xl sm:text-4xl font-bold tracking-tight text-white">
+    Get on the early-access list.
+  </h2>
+  <p class="mt-4 text-lg copy-muted max-w-2xl mx-auto">
+    If you are starting from zero and want a clear path to becoming a
+    professional contributor, join the DEVS list for first access.
+  </p>
+
+  <div id="notify" class="mt-10 mx-auto max-w-2xl surface-card p-6 sm:p-8 text-left">
+    <form
+      id="brevo-notify-form"
+      method="POST"
+      action="https://2b8ceb88.sibforms.com/serve/MUIFACBpIeDr26eqRTuh7sO73Hu5UambNpLqXwHmyUTfqapO0LIivLwSlFVx4gLRMZgtF6jBF09Jm00Rd0lkEzaRrkYFidXqDDemW2l3iiGNQG0zigp3-0fgri07_uge5FyCymz8fRiqPWxopFEdXpRwqmn9CCEt8LMA2HJwq7noj5A3eoUJapDAOex_L2tc9Scr7RaYJXoKJIBgyg=="
+      target="brevo-submit-target"
+      onsubmit="window.handleBrevoSubmit && window.handleBrevoSubmit()"
+      class="space-y-4"
+    >
+      <label for="notify-email" class="block text-sm font-semibold text-white">
+        Email address
+      </label>
+      <input
+        id="notify-email"
+        name="EMAIL"
+        type="email"
+        required
+        autocomplete="email"
+        placeholder="you@example.com"
+        class="w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-0)]/80 px-4 py-3 text-white placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-accent)] focus:outline-none"
+      />
+
+      <input type="text" name="email_address_check" value="" class="hidden" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="locale" value="en" />
+
+      <button id="notify-submit" type="submit" class="btn-primary cta-glow w-full sm:w-auto">
+        <span id="notify-submit-label">Notify me <span aria-hidden="true">&rarr;</span></span>
+      </button>
+
+      <p id="notify-help" class="text-xs copy-subtle" aria-live="polite">
+        We will only use your email for DEVS updates.
+      </p>
+      <p id="notify-loading" class="hidden text-sm text-cyan-200 font-medium" aria-live="polite">
+        Submitting...
+      </p>
+      <p id="notify-success" class="hidden text-sm text-emerald-300 font-medium">
+        Thanks. You are on the list. Check your inbox for confirmation.
+      </p>
+      <p id="notify-error" class="hidden text-sm text-amber-200 font-medium">
+        If you do not see a confirmation soon, please try again.
+      </p>
+    </form>
+
+    <iframe
+      name="brevo-submit-target"
+      id="brevo-submit-target"
+      title="Brevo submit target"
+      onload="window.handleBrevoLoad && window.handleBrevoLoad()"
+      class="hidden"
+    />
+  </div>
+
+  <div class="mt-8 mx-auto max-w-3xl surface-card p-5 sm:p-6">
+    <div class="flex flex-col sm:flex-row items-center gap-5 text-left">
+      <img
+        src="/images/josh-ahles.jpeg"
+        alt="Josh Ahles"
+        class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-[var(--color-border)]"
+        loading="lazy"
+      />
+      <div class="flex-1">
+        <p class="text-sm copy-subtle">Founder</p>
+        <p class="text-lg font-semibold text-white">Josh Ahles</p>
+        <p class="mt-1 text-sm copy-muted">
+          CS grad, 8+ years in software, 4 as a developer.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a
+            href="https://www.linkedin.com/in/joshahles/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center rounded-md border border-[var(--color-border)] bg-[var(--color-surface-0)]/70 px-3 py-1.5 text-xs font-semibold text-[var(--color-accent)] hover:border-[var(--color-accent)]/50 transition-colors"
+          >
+            <svg class="w-3.5 h-3.5 mr-1.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M4.98 3.5A2.48 2.48 0 1 0 5 8.46a2.48 2.48 0 0 0-.02-4.96ZM3 9h4v12H3V9Zm7 0h3.83v1.71h.05c.53-1 1.84-2.06 3.79-2.06C21.2 8.65 22 10.97 22 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.37 1.61-2.37 3.27V21h-4V9Z"/>
+            </svg>
+            LinkedIn <span class="ml-1" aria-hidden="true">&rarr;</span>
+          </a>
+          <a
+            href="https://joshahles.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center rounded-md border border-[var(--color-border)] bg-[var(--color-surface-0)]/70 px-3 py-1.5 text-xs font-semibold text-[var(--color-accent)] hover:border-[var(--color-accent)]/50 transition-colors"
+          >
+            <svg class="w-3.5 h-3.5 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path>
+            </svg>
+            Portfolio <span class="ml-1" aria-hidden="true">&rarr;</span>
+          </a>
+          <a
+            href="https://github.com/JoshAhles"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center rounded-md border border-[var(--color-border)] bg-[var(--color-surface-0)]/70 px-3 py-1.5 text-xs font-semibold text-[var(--color-accent)] hover:border-[var(--color-accent)]/50 transition-colors"
+          >
+            <svg class="w-3.5 h-3.5 mr-1.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.37-1.33-1.73-1.33-1.73-1.08-.73.08-.72.08-.72 1.2.08 1.82 1.21 1.82 1.21 1.06 1.8 2.79 1.28 3.47.98.11-.76.42-1.28.76-1.58-2.67-.3-5.48-1.31-5.48-5.84 0-1.29.47-2.35 1.23-3.18-.12-.3-.53-1.52.12-3.16 0 0 1.01-.32 3.3 1.21a11.56 11.56 0 0 1 6 0c2.3-1.53 3.3-1.2 3.3-1.2.66 1.64.25 2.86.13 3.16.77.83 1.23 1.89 1.23 3.18 0 4.54-2.82 5.53-5.5 5.83.43.37.82 1.1.82 2.23v3.3c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/>
+            </svg>
+            GitHub <span class="ml-1" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-16 pt-8 border-t border-[var(--color-border)] text-sm copy-subtle">
+    <p class="font-medium copy-muted">
+      Real experience. Built for your first dev job.
+    </p>
+    <p class="mt-6">&copy; {new Date().getFullYear()} DEVS (begindevs.com)</p>
+  </footer>
+</div>
+
+<script>
+  const form = document.getElementById("brevo-notify-form");
+  const submit = document.getElementById("notify-submit");
+  const submitLabel = document.getElementById("notify-submit-label");
+  const success = document.getElementById("notify-success");
+  const help = document.getElementById("notify-help");
+  const loading = document.getElementById("notify-loading");
+  const error = document.getElementById("notify-error");
+
+  let submittedAt = 0;
+  let timeoutId = 0;
+
+  window.handleBrevoSubmit = () => {
+    submittedAt = Date.now();
+    success?.classList.add("hidden");
+    error?.classList.add("hidden");
+    help?.classList.add("hidden");
+    loading?.classList.remove("hidden");
+    if (submit) submit.disabled = true;
+    if (submitLabel) submitLabel.textContent = "Submitting...";
+
+    clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      if (!submittedAt) return;
+      loading?.classList.add("hidden");
+      error?.classList.remove("hidden");
+      if (submit) submit.disabled = false;
+      if (submitLabel) submitLabel.innerHTML = 'Notify me <span aria-hidden="true">&rarr;</span>';
+      submittedAt = 0;
+    }, 12000);
+  };
+
+  window.handleBrevoLoad = () => {
+    if (!submittedAt) return;
+    clearTimeout(timeoutId);
+    loading?.classList.add("hidden");
+    success?.classList.remove("hidden");
+    error?.classList.add("hidden");
+    if (submit) submit.disabled = false;
+    if (submitLabel) submitLabel.innerHTML = 'Notify me <span aria-hidden="true">&rarr;</span>';
+    form?.reset();
+    submittedAt = 0;
+  };
+</script>
