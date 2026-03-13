@@ -290,23 +290,6 @@ body {
   position: relative;
 }
 
-.terminal-shell::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(45, 212, 255, 0.8),
-    transparent
-  );
-  opacity: 0.5;
-  animation: scanline 5.8s linear infinite;
-  pointer-events: none;
-}
-
 .orb-float-slow {
   animation: orbFloat 14s ease-in-out infinite;
 }
@@ -356,15 +339,6 @@ body {
     background-position:
       44px 44px,
       44px 44px;
-  }
-}
-
-@keyframes scanline {
-  from {
-    top: 0;
-  }
-  to {
-    top: calc(100% - 2px);
   }
 }
 
@@ -450,7 +424,6 @@ body {
   .btn-primary,
   .grid-tech,
   .grid-wave-on-lines,
-  .terminal-shell::after,
   .terminal-cursor,
   .orb-float-slow,
   .orb-float-fast {
