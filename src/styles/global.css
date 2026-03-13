@@ -115,34 +115,14 @@ body {
   pointer-events: none;
 }
 
-.surface-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(115, 232, 255, 0.12) 50%,
-    transparent 70%
-  );
-  transform: translateX(-120%);
-  opacity: 0;
-  pointer-events: none;
-}
-
 .surface-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(45, 212, 255, 0.5);
+  transform: translateY(-2px);
+  border-color: rgba(45, 212, 255, 0.28);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 8px 24px rgba(0, 0, 0, 0.3),
-    0 20px 42px rgba(1, 8, 23, 0.55),
-    0 0 0 1px rgba(45, 212, 255, 0.12);
-}
-
-.surface-card:hover::after {
-  opacity: 1;
-  animation: sweep 1.25s ease;
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 6px 20px rgba(0, 0, 0, 0.3),
+    0 16px 36px rgba(1, 8, 23, 0.5),
+    0 0 0 1px rgba(45, 212, 255, 0.08);
 }
 
 /* Primary CTA card: subtle accent glow so it reads as the main focus */
@@ -335,70 +315,6 @@ body {
   animation: orbFloat 9s ease-in-out infinite reverse;
 }
 
-.fade-up {
-  animation: fadeUp 560ms ease both;
-}
-
-.fade-up-delay {
-  animation: fadeUp 560ms ease 120ms both;
-}
-
-/* Advanced Animation Utilities */
-
-@utility scroll-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-@utility scroll-reveal-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 600ms ease,
-    transform 600ms ease;
-}
-
-@utility stagger-delay-1 {
-  transition-delay: 100ms;
-}
-
-@utility stagger-delay-2 {
-  transition-delay: 200ms;
-}
-
-@utility stagger-delay-3 {
-  transition-delay: 300ms;
-}
-
-@utility stagger-delay-4 {
-  transition-delay: 400ms;
-}
-
-@utility stagger-delay-5 {
-  transition-delay: 500ms;
-}
-
-@utility stagger-delay-6 {
-  transition-delay: 600ms;
-}
-
-@utility parallax {
-  will-change: transform;
-}
-
-@utility fade-in-up {
-  animation: fadeInUp 600ms ease both;
-}
-
-@utility card-hover-depth {
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(45, 212, 255, 0.2);
-  }
-}
-
 @utility section-flow {
   position: relative;
 
@@ -428,37 +344,6 @@ body {
     transparent 50%
   );
   animation: flowPulse 8s ease-in-out infinite;
-}
-
-@keyframes fadeUp {
-  from {
-    transform: translateY(12px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes sweep {
-  from {
-    transform: translateX(-120%);
-  }
-  to {
-    transform: translateX(120%);
-  }
 }
 
 @keyframes gridDrift {
@@ -495,69 +380,6 @@ body {
   }
 }
 
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(45, 212, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(45, 212, 255, 0.4);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes bounce-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slide-in-left {
-  from {
-    transform: translateX(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-in-right {
-  from {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 @keyframes typed-cursor {
   0%,
   50% {
@@ -587,22 +409,6 @@ body {
   background-color: var(--color-accent);
   animation: typed-cursor 1s step-end infinite;
   vertical-align: -0.15em;
-}
-
-/* Success celebration animation */
-@keyframes celebrate {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.1);
-    opacity: 0;
-  }
-}
-
-.celebrate {
-  animation: celebrate 600ms ease-out;
 }
 
 /* Form loading spinner */
@@ -641,18 +447,13 @@ body {
     opacity: 1;
   }
 
-  .fade-up,
-  .fade-up-delay,
   .btn-primary,
   .grid-tech,
   .grid-wave-on-lines,
   .terminal-shell::after,
   .terminal-cursor,
   .orb-float-slow,
-  .orb-float-fast,
-  .surface-card:hover::after,
-  .scroll-reveal-active,
-  .fade-in-up {
+  .orb-float-fast {
     animation: none;
     transition: none;
   }

@@ -5,11 +5,17 @@
   <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
     <a
       href="/"
-      class="logo-block group flex flex-col items-start leading-tight transition-colors"
+      class="logo-block group flex flex-col items-end leading-tight transition-colors"
       aria-label="DEVS — Developer Engineering and Vibe School"
     >
-      <span class="font-display text-xl tracking-tight text-white group-hover:text-[var(--color-accent)] transition-colors">DEVS</span>
-      <span class="logo-subtitle text-[0.65rem] font-medium tracking-wide uppercase text-[var(--color-text-muted)] mt-0.5 hidden sm:block">Developer Engineering & Vibe School</span>
+      <img
+        src="/images/DEVS-logo-transparent.png"
+        alt="DEVS"
+        class="logo-img h-12 w-auto object-contain"
+        width="180"
+        height="48"
+      />
+      <span class="logo-subtitle text-[0.55rem] font-medium tracking-wide uppercase text-[var(--color-text-muted)] mt-0.5 hidden sm:block"><span class="logo-letter">D</span>eveloper <span class="logo-letter">E</span>ngineering & <span class="logo-letter">V</span>ibe <span class="logo-letter">S</span>chool</span>
     </a>
 
     <a href="#notify" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg border border-[var(--color-accent)]/50 bg-[var(--color-accent-ghost)] text-[var(--color-accent)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-subtle)] transition-all">
@@ -27,7 +33,13 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   }
 
-  /* Two-line logo: DEVS + full phrase, fits in nav */
+  .logo-img {
+    display: block;
+  }
+  .logo-subtitle .logo-letter {
+    color: #6ee76e;
+    text-shadow: 0 0 4px rgba(110, 231, 110, 0.4);
+  }
   .logo-block:hover .logo-subtitle {
     color: var(--color-text-soft);
   }
