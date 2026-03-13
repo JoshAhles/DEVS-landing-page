@@ -14,7 +14,7 @@
 
   <div class="space-y-6 max-w-3xl mx-auto">
     <!-- Stage 1: Foundation -->
-    <div class="surface-card p-8 fade-in-up" style="animation-delay: 100ms">
+    <div class="surface-card p-8">
       <div class="flex flex-col md:flex-row gap-6">
         <div class="flex-shrink-0">
           <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-[var(--color-accent)]/20 to-[var(--color-accent-2)]/20 border border-[var(--color-accent)]/30 flex items-center justify-center">
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Stage 2: Real Applications -->
-    <div class="surface-card p-8 fade-in-up" style="animation-delay: 150ms">
+    <div class="surface-card p-8">
       <div class="flex flex-col md:flex-row gap-6">
         <div class="flex-shrink-0">
           <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-[var(--color-accent-2)]/20 to-[var(--color-accent)]/20 border border-[var(--color-accent-2)]/30 flex items-center justify-center">
@@ -58,7 +58,7 @@
     </div>
 
     <!-- Stage 3: Portfolio Ready -->
-    <div class="surface-card p-8 fade-in-up" style="animation-delay: 200ms">
+    <div class="surface-card p-8">
       <div class="flex flex-col md:flex-row gap-6">
         <div class="flex-shrink-0">
           <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-[var(--color-accent)]/20 to-[var(--color-accent-2)]/20 border border-[var(--color-accent-2)]/30 flex items-center justify-center">
@@ -98,21 +98,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  const cards = document.querySelectorAll('[class*="fade-in-up"]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    observer.observe(card);
-  });
-</script>

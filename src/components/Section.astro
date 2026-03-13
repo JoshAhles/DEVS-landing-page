@@ -8,6 +8,8 @@ interface Props {
   parallax?: boolean;
   accentColor?: 'cyan' | 'green';
   bgVariant?: 'light' | 'dark' | 'gradient';
+  /** Delay in ms between animating each direct child when in view (0 = animate wrapper only) */
+  animateStagger?: number;
 }
 
 const { 
@@ -18,7 +20,8 @@ const {
   spacingVariant = 'normal',
   parallax = false,
   accentColor = 'cyan',
-  bgVariant = 'gradient'
+  bgVariant = 'gradient',
+  animateStagger = 0
 } = Astro.props;
 
 const spacingMap = {
@@ -83,7 +86,11 @@ const accentRadials = {
     aria-hidden="true"
   />
 
-  <div class:list={["mx-auto relative z-10", narrow ? "max-w-2xl" : "max-w-5xl"]}>
+  <div
+    class:list={["mx-auto relative z-10", narrow ? "max-w-2xl" : "max-w-5xl"]}
+    data-animate
+    data-animate-stagger={animateStagger > 0 ? animateStagger : undefined}
+  >
     <slot />
   </div>
 </section>

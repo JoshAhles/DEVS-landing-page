@@ -622,7 +622,25 @@ body {
   }
 }
 
+/* Hero: hidden until anime.js runs (avoids flash) */
+.anime-hero-pending {
+  opacity: 0;
+}
+
+/* Sections: start hidden so scroll reveal doesn’t flash (script animates 0→1 once) */
+[data-animate] {
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .anime-hero-pending {
+    opacity: 1;
+  }
+
+  [data-animate] {
+    opacity: 1;
+  }
+
   .fade-up,
   .fade-up-delay,
   .btn-primary,

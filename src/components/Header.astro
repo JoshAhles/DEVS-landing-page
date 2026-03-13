@@ -3,16 +3,14 @@
 
 <header id="site-header" class="sticky top-0 z-40 backdrop-blur-md bg-[linear-gradient(180deg,rgba(4,8,22,0.9)_0%,rgba(4,8,22,0.7)_100%)] border-b border-[var(--color-border-subtle)] transition-shadow duration-300">
   <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="font-display text-xl tracking-tight text-white hover:text-[var(--color-accent)] transition-colors">
-      DEVS
+    <a
+      href="/"
+      class="logo-block group flex flex-col items-start leading-tight transition-colors"
+      aria-label="DEVS — Developer Engineering and Vibe School"
+    >
+      <span class="font-display text-xl tracking-tight text-white group-hover:text-[var(--color-accent)] transition-colors">DEVS</span>
+      <span class="logo-subtitle text-[0.65rem] font-medium tracking-wide uppercase text-[var(--color-text-muted)] mt-0.5 hidden sm:block">Developer Engineering & Vibe School</span>
     </a>
-    
-    <nav class="hidden md:flex items-center gap-8">
-      <a href="#what-we-teach" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Curriculum</a>
-      <a href="#how-it-works" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Process</a>
-      <a href="#lab" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Environment</a>
-      <a href="#pricing" class="text-sm copy-muted hover:text-[var(--color-accent)] transition-colors">Pricing</a>
-    </nav>
 
     <a href="#notify" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg border border-[var(--color-accent)]/50 bg-[var(--color-accent-ghost)] text-[var(--color-accent)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-subtle)] transition-all">
       Join early access <span aria-hidden="true">&rarr;</span>
@@ -27,6 +25,14 @@
 
   header.is-scrolled {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Two-line logo: DEVS + full phrase, fits in nav */
+  .logo-block:hover .logo-subtitle {
+    color: var(--color-text-soft);
+  }
+  .logo-block:focus-visible .logo-subtitle {
+    color: var(--color-text-soft);
   }
 
   @keyframes slideDownIn {

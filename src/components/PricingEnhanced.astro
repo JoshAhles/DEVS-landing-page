@@ -8,7 +8,7 @@
   </h2>
 
   <div class="mt-12 max-w-md mx-auto">
-    <div class="surface-card p-10 card-hover-depth fade-in-up">
+    <div class="surface-card p-10 card-hover-depth">
       <!-- Price highlight -->
       <div class="inline-block mb-6">
         <div class="text-5xl font-display text-[var(--color-accent)] font-bold">Free</div>
@@ -57,21 +57,3 @@
     </p>
   </div>
 </div>
-
-<script>
-  const pricingCard = document.querySelector('.fade-in-up');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  if (pricingCard) {
-    pricingCard.style.opacity = '0';
-    pricingCard.style.transform = 'translateY(20px)';
-    observer.observe(pricingCard);
-  }
-</script>
