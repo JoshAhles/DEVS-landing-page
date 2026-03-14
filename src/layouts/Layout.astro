@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title,
-  description = "DEVS helps complete beginners become job-ready software developers through hands-on labs, Git workflows, code reviews, and real engineering habits. Built by a CS bachelor's graduate with 8+ years in software, including 4 years as a software developer.",
+  description = "DEVS is training and support for complete beginners: hands-on labs, Git workflows, code reviews, and real engineering habits. Knowledge and practice for personal growth—no diplomas or job guarantees. Built by someone with 8+ years in software, including 4 as a developer.",
 } = Astro.props;
 import "../styles/global.css";
 import Header from "../components/Header.astro";
@@ -23,7 +23,7 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta name="description" content={description} />
     <meta name="color-scheme" content="dark" />
     <link rel="canonical" href={siteUrl} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" id="favicon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,6 +56,154 @@ const ogImage = `${siteUrl}/og-image.png`;
     <slot />
     <script>
       import "../scripts/animations.js";
+    </script>
+    <script>
+      (function () {
+        const CURSOR = "\u258C"; // left half block (thicker than │, thinner than █)
+        const fullTitle = document.title;
+        const suffix = fullTitle.startsWith("DEVS") ? fullTitle.slice(4) : "";
+
+        const ZWS = "\u200B"; // zero-width space (keeps title non-empty so browser doesn't show host)
+        function setTitle(prefix, showCursor) {
+          const p = prefix || ZWS;
+          document.title = p + (showCursor ? CURSOR : "") + suffix;
+        }
+
+        const SP = "\u2009"; // thin space
+        const typeSteps = ["D", "D" + SP + "E", "D" + SP + "E" + SP + "V", "D" + SP + "E" + SP + "V" + SP + "S"];
+        const backSteps = ["D" + SP + "E" + SP + "V" + SP + "S", "D" + SP + "E" + SP + "V", "D" + SP + "E", "D", ""];
+        const typeDelay = 580;
+        const backDelay = 420;
+        const blinkIntervalMs = 530;
+        const initialBlinkDuration = 1500; // blink cursor alone before typing
+        const hangDuration = 2800; // blink on DEVS before backspace
+        const pauseBeforeRetype = 600;
+        let stepIndex = 0;
+        let blinkId = null;
+        const fullStr = typeSteps[typeSteps.length - 1];
+
+        function runCycle() {
+          if (blinkId) clearInterval(blinkId);
+          blinkId = null;
+          stepIndex = 0;
+
+          function startTyping() {
+            if (document.hidden) {
+              setTimeout(runCycle, 2000);
+              return;
+            }
+            stepIndex = 0;
+            typingNext();
+          }
+
+          function typingNext() {
+            if (document.hidden) {
+              setTimeout(runCycle, 2000);
+              return;
+            }
+            if (stepIndex < typeSteps.length) {
+              setTitle(typeSteps[stepIndex], true);
+              stepIndex++;
+              setTimeout(typingNext, typeDelay);
+            } else {
+              let blinkOn = true;
+              blinkId = setInterval(function () {
+                if (document.hidden) return;
+                blinkOn = !blinkOn;
+                setTitle(fullStr, blinkOn);
+              }, blinkIntervalMs);
+              setTimeout(function () {
+                if (blinkId) clearInterval(blinkId);
+                blinkId = null;
+                backspaceNext();
+              }, hangDuration);
+            }
+          }
+
+          function backspaceNext() {
+            if (document.hidden) {
+              setTimeout(runCycle, 2000);
+              return;
+            }
+            const i = stepIndex - typeSteps.length;
+            if (i < backSteps.length) {
+              setTitle(backSteps[i], true);
+              stepIndex++;
+              setTimeout(backspaceNext, backDelay);
+            } else {
+              setTimeout(function () {
+                if (document.hidden) return;
+                runCycle();
+              }, pauseBeforeRetype);
+            }
+          }
+
+          // Blink cursor with no letters first
+          let blinkOn = true;
+          setTitle("", true);
+          blinkId = setInterval(function () {
+            if (document.hidden) return;
+            blinkOn = !blinkOn;
+            setTitle("", blinkOn);
+          }, blinkIntervalMs);
+          setTimeout(function () {
+            if (blinkId) clearInterval(blinkId);
+            blinkId = null;
+            startTyping();
+          }, initialBlinkDuration);
+        }
+
+        runCycle();
+
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            if (blinkId) clearInterval(blinkId);
+            blinkId = null;
+            document.title = "DEVS";
+          }
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        const size = 32;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        const link = document.getElementById("favicon");
+        if (!link) return;
+
+        let hue = 0;
+        let lastUpdate = 0;
+        const interval = 100; // ~10 FPS for smooth but lightweight
+
+        function draw() {
+          ctx.clearRect(0, 0, size, size);
+          ctx.font = "bold 18px ui-monospace, monospace";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
+          ctx.fillText("</>", size / 2, size / 2 + 1);
+        }
+
+        function tick(now) {
+          if (document.hidden) {
+            requestAnimationFrame(tick);
+            return;
+          }
+          if (now - lastUpdate >= interval) {
+            hue = (hue + 2) % 360;
+            lastUpdate = now;
+            draw();
+            link.href = canvas.toDataURL("image/png");
+          }
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      })();
     </script>
   </body>
 </html>
