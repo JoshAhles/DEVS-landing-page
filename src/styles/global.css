@@ -61,6 +61,18 @@ body {
   color: white;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
 .font-mono {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
 }
@@ -120,6 +132,27 @@ body {
   pointer-events: none;
 }
 
+.surface-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  transition: left 600ms ease;
+  pointer-events: none;
+}
+
+.surface-card:hover::after {
+  left: 120%;
+}
+
 .surface-card:hover {
   transform: translateY(-2px);
   border-color: rgba(45, 212, 255, 0.28);
@@ -162,6 +195,18 @@ body {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  animation: eyebrowPulse 4s ease-in-out infinite;
+}
+
+@keyframes eyebrowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(45, 212, 255, 0);
+    border-color: rgba(45, 212, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 12px 2px rgba(45, 212, 255, 0.12);
+    border-color: rgba(45, 212, 255, 0.7);
+  }
 }
 
 .value-pill {
@@ -177,6 +222,8 @@ body {
 }
 
 .btn-primary {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -194,6 +241,29 @@ body {
     box-shadow 180ms ease,
     filter 180ms ease,
     background-position 220ms ease;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  background-position: 200% 0;
+  animation: btnShimmer 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes btnShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -50% 0; }
 }
 
 .btn-primary:hover {
@@ -427,13 +497,19 @@ body {
   }
 
   .btn-primary,
+  .btn-primary::before,
   .grid-tech,
   .grid-wave-on-lines,
   .terminal-cursor,
   .orb-float-slow,
-  .orb-float-fast {
+  .orb-float-fast,
+  .eyebrow {
     animation: none;
     transition: none;
+  }
+
+  .surface-card::after {
+    display: none;
   }
 
   .terminal-cursor {
