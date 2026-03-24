@@ -56,6 +56,38 @@ function runHeroEntrance() {
     set(accentSpan, { opacity: 0.7 });
     animate(accentSpan, { opacity: [0.7, 1], duration: 350, delay: 500 });
   }
+
+  const mockup = hero.querySelector("[data-hero-mockup]");
+  if (mockup) {
+    const glow = mockup.querySelector(".hero-mockup-glow");
+    const panels = mockup.querySelectorAll(".hero-panel");
+
+    set(mockup, { opacity: 0, translateY: "30px", scale: 0.97 });
+    animate(mockup, {
+      opacity: [0, 1],
+      translateY: ["30px", "0px"],
+      scale: [0.97, 1],
+      duration: 800,
+      delay: 900,
+      ease: "outCubic",
+    });
+
+    if (glow) {
+      set(glow, { opacity: 0 });
+      animate(glow, { opacity: [0, 1], duration: 1200, delay: 1100, ease: "outQuad" });
+    }
+
+    if (panels.length) {
+      panels.forEach((panel) => set(panel, { opacity: 0, translateY: "12px" }));
+      animate(panels, {
+        opacity: [0, 1],
+        translateY: ["12px", "0px"],
+        delay: stagger(140, { start: 1200 }),
+        duration: 500,
+        ease: "outCubic",
+      });
+    }
+  }
 }
 
 function animateChildren(parent, selector, options = {}) {

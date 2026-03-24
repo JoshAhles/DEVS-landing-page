@@ -3,7 +3,7 @@
 
 <section
   id="hero"
-  class="relative h-screen flex items-center justify-center px-6 overflow-hidden"
+  class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden"
 >
   <div
     class="absolute inset-0 grid-tech opacity-25"
@@ -22,14 +22,14 @@
     aria-hidden="true"
   />
 
-  <div class="relative max-w-5xl mx-auto text-center anime-hero-pending" data-hero-content>
+  <div class="relative z-10 max-w-5xl mx-auto text-center anime-hero-pending" data-hero-content>
     <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-tight">
       You can write code.<br />
-      <span class="text-[var(--color-accent)] neon-glow">Now learn to ship it like a teammate.</span>
+      Now learn to <span class="text-[var(--color-accent)] neon-glow">ship it like a teammate.</span>
     </h1>
 
     <p class="mt-7 text-lg sm:text-xl copy-muted max-w-2xl mx-auto leading-relaxed">
-      Practice the real loop — sprint planning, pull requests, code review, team communication — inside a simulated engineering environment with real standards and real feedback.
+      Sprint planning, pull requests, code review, team communication — practiced inside a simulated engineering environment with standards and feedback that match the job.
     </p>
 
     <div class="mt-10">
@@ -41,4 +41,129 @@
       </a>
     </div>
   </div>
+
+  <!-- Product mockup: simulated DEVS workspace -->
+  <div class="relative z-10 mt-14 sm:mt-16 w-full max-w-4xl mx-auto" data-hero-mockup>
+    <div class="hero-mockup-glow absolute -inset-8 rounded-3xl opacity-0" aria-hidden="true"></div>
+    <div class="hero-mockup-frame relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-0)] shadow-2xl overflow-hidden">
+      <!-- Window chrome -->
+      <div class="flex items-center gap-2 px-4 py-2.5 border-b border-[var(--color-border-subtle)] bg-[var(--color-surface-1)]">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
+        <span class="ml-3 text-[0.65rem] font-mono copy-subtle tracking-wide">DEVS — Sprint 4 / Lab 12</span>
+        <span class="ml-auto flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-[0.58rem] text-emerald-400 font-medium font-mono">connected</span>
+        </span>
+      </div>
+
+      <!-- Workspace panels -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 min-h-[220px] sm:min-h-[260px]">
+
+        <!-- Left: Task card -->
+        <div class="sm:col-span-4 p-4 border-b sm:border-b-0 sm:border-r border-[var(--color-border-subtle)] hero-panel" data-hero-panel="task">
+          <p class="text-[0.6rem] uppercase tracking-widest text-[var(--color-accent)] font-semibold mb-2">Current task</p>
+          <p class="text-sm font-semibold text-white leading-snug">Add zip code validation to checkout form</p>
+          <div class="mt-3 space-y-1.5">
+            <p class="text-[0.68rem] copy-subtle flex items-start gap-1.5"><span class="text-[var(--color-accent-2)] mt-px">●</span> Empty zip shows required error</p>
+            <p class="text-[0.68rem] copy-subtle flex items-start gap-1.5"><span class="text-[var(--color-accent-2)] mt-px">●</span> Invalid zip blocks submit</p>
+            <p class="text-[0.68rem] copy-subtle flex items-start gap-1.5"><span class="text-[var(--color-accent-2)] mt-px">●</span> Tests updated, PR opened</p>
+          </div>
+          <div class="mt-3 flex gap-1.5">
+            <span class="text-[0.58rem] px-1.5 py-0.5 rounded bg-[var(--color-accent)]/10 text-[var(--color-accent)] border border-[var(--color-accent)]/20 font-medium">Checkout team</span>
+            <span class="text-[0.58rem] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-medium">Medium</span>
+          </div>
+        </div>
+
+        <!-- Center: Terminal -->
+        <div class="sm:col-span-5 p-4 border-b sm:border-b-0 sm:border-r border-[var(--color-border-subtle)] font-mono text-[0.72rem] hero-panel" data-hero-panel="terminal">
+          <p class="text-[0.6rem] uppercase tracking-widest copy-subtle font-semibold font-sans mb-2">Terminal</p>
+          <div class="space-y-1 copy-subtle">
+            <p><span class="text-[var(--color-accent)]">$</span> git checkout -b fix/zip-validation</p>
+            <p class="text-[var(--color-accent-2)]">Switched to new branch 'fix/zip-validation'</p>
+            <p><span class="text-[var(--color-accent)]">$</span> npm run test -- checkout</p>
+            <p class="text-emerald-400">✓ 4 tests passed</p>
+            <p><span class="text-[var(--color-accent)]">$</span> git push origin fix/zip-validation</p>
+            <p class="copy-subtle">remote: Create PR → <span class="text-[var(--color-accent)] underline">begindevs.com/pr/47</span></p>
+          </div>
+        </div>
+
+        <!-- Right: PR Review -->
+        <div class="sm:col-span-3 p-4 hero-panel" data-hero-panel="review">
+          <p class="text-[0.6rem] uppercase tracking-widest copy-subtle font-semibold mb-2">PR Review</p>
+          <div class="space-y-2.5">
+            <div class="rounded-lg bg-[var(--color-surface-2)] p-2">
+              <p class="text-[0.62rem] font-semibold text-[var(--color-accent)]">@alex_sr</p>
+              <p class="text-[0.66rem] copy-subtle mt-0.5 leading-relaxed">Clean approach. Can you add a test for the empty-string edge case?</p>
+            </div>
+            <div class="rounded-lg bg-[var(--color-surface-2)] p-2">
+              <p class="text-[0.62rem] font-semibold text-amber-400">@qa_maria</p>
+              <p class="text-[0.66rem] copy-subtle mt-0.5 leading-relaxed">What happens if the user pastes a zip with spaces?</p>
+            </div>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+              <p class="text-[0.6rem] text-amber-400 font-medium">Changes requested</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Status bar -->
+      <div class="flex items-center justify-between px-4 py-1.5 border-t border-[var(--color-border-subtle)] bg-[var(--color-surface-1)]">
+        <div class="flex items-center gap-3">
+          <span class="text-[0.56rem] font-mono copy-subtle">Sprint 4 — Day 3 of 10</span>
+          <span class="text-[0.56rem] font-mono text-[var(--color-accent)]">3/5 tasks done</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-20 h-1 rounded-full bg-[var(--color-surface-2)] overflow-hidden">
+            <div class="h-full w-3/5 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] sprint-progress"></div>
+          </div>
+          <span class="text-[0.56rem] font-mono text-[var(--color-accent-2)]">60%</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  .hero-mockup-frame {
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      0 24px 48px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(45, 212, 255, 0.06),
+      0 0 80px rgba(45, 212, 255, 0.04);
+  }
+
+  .hero-mockup-glow {
+    background: radial-gradient(
+      ellipse at 50% 60%,
+      rgba(45, 212, 255, 0.14) 0%,
+      rgba(0, 245, 180, 0.06) 35%,
+      transparent 65%
+    );
+    filter: blur(32px);
+  }
+
+  .sprint-progress {
+    animation: sprintFill 1.8s ease-out 1.6s both;
+  }
+
+  @keyframes sprintFill {
+    from { width: 0; }
+    to { width: 60%; }
+  }
+
+  @media (max-width: 639px) {
+    [data-hero-mockup] {
+      max-width: calc(100vw - 2rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sprint-progress {
+      animation: none;
+    }
+  }
+</style>
