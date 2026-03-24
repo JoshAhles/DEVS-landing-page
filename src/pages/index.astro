@@ -17,61 +17,60 @@ import CtaSection from "../components/CtaSection.astro";
 
 <Layout title="DEVS">
   <main id="main">
-    <!-- Hero with maximum impact -->
     <Hero />
 
-    <!-- Trust building with animated stats -->
-    <Section id="trust" narrow extraTopPadding spacingVariant="spacious" accentColor="cyan" bgVariant="gradient">
+    <!-- 1. Who this is for — immediate audience identification -->
+    <Section id="who" extraTopPadding spacingVariant="spacious" accentColor="cyan" bgVariant="gradient">
       <TrustSection />
     </Section>
 
-    <!-- Value propositions - what makes DEVS different -->
-    <Section id="value-props" dark spacingVariant="normal" accentColor="green" bgVariant="dark">
+    <!-- 2. What makes DEVS different — the flight simulator pitch -->
+    <Section id="difference" dark spacingVariant="normal" accentColor="green" bgVariant="dark">
       <ValueProps />
     </Section>
 
-    <!-- School-to-team gap narrative -->
-    <Section id="why-devs" dark spacingVariant="normal" accentColor="cyan" bgVariant="gradient">
-      <WhyDEVS />
-    </Section>
-
-    <!-- Curriculum features - separated from value props -->
-    <Section id="what-we-teach" spacingVariant="compact" accentColor="green" bgVariant="light">
-      <FeaturesGrid />
-    </Section>
-
-    <!-- Portfolio building - what you'll ship -->
-    <Section id="portfolio" spacingVariant="spacious" accentColor="cyan" bgVariant="gradient">
-      <PortfolioShowcase />
-    </Section>
-
-    <!-- Why DEVS is different - narrative context -->
-    <Section id="not-vibe" dark spacingVariant="normal" accentColor="cyan" bgVariant="dark">
+    <!-- 3. AI/vibe coding stance — differentiation + objection handling early -->
+    <Section id="approach" dark spacingVariant="normal" accentColor="cyan" bgVariant="dark">
       <NotVibeSection />
     </Section>
 
-    <!-- 4-step process timeline -->
+    <!-- 4. The delivery loop — show how it works -->
     <Section id="how-it-works" spacingVariant="spacious" accentColor="green" bgVariant="light">
       <ProcessTimeline />
     </Section>
 
-    <!-- Social proof - testimonials carousel -->
-    <Section id="testimonials" dark spacingVariant="normal" accentColor="cyan" bgVariant="dark">
-      <Testimonials />
-    </Section>
-
-    <!-- Lab environment showcase -->
-    <Section id="lab" spacingVariant="spacious" accentColor="green" bgVariant="light">
+    <!-- 5. The environment — visual proof of the product -->
+    <Section id="lab" spacingVariant="normal" accentColor="cyan" bgVariant="gradient">
       <LabTeaserEnhanced />
     </Section>
 
-    <!-- Enhanced pricing with benefits -->
-    <Section id="pricing" dark spacingVariant="normal" accentColor="cyan" bgVariant="dark">
+    <!-- 6. What you'll practice — specific skills -->
+    <Section id="skills" spacingVariant="compact" accentColor="green" bgVariant="light">
+      <FeaturesGrid />
+    </Section>
+
+    <!-- 7. Founder story — trust and credibility -->
+    <Section id="why-devs" dark spacingVariant="normal" accentColor="cyan" bgVariant="gradient">
+      <WhyDEVS />
+    </Section>
+
+    <!-- 8. Outcomes and delivery record — what you walk away with -->
+    <Section id="outcomes" spacingVariant="spacious" accentColor="green" bgVariant="light">
+      <PortfolioShowcase />
+    </Section>
+
+    <!-- 9. Outcome proof — what DEVS trains you to do -->
+    <Section id="proof" dark spacingVariant="normal" accentColor="cyan" bgVariant="dark">
+      <Testimonials />
+    </Section>
+
+    <!-- 10. Pricing — free/pro split -->
+    <Section id="pricing" dark spacingVariant="normal" accentColor="green" bgVariant="dark">
       <PricingEnhanced />
     </Section>
 
-    <!-- Final CTA and founder bio -->
-    <Section id="cta-section" dark spacingVariant="extra" accentColor="green" bgVariant="light">
+    <!-- 11. Final CTA -->
+    <Section id="cta-section" dark spacingVariant="extra" accentColor="cyan" bgVariant="light">
       <CtaSection />
     </Section>
   </main>
