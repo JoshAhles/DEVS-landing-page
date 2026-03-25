@@ -1,4 +1,4 @@
-# DEVS — Developer, Engineering, and Vibe School
+# DEVS — Developer Engineering and Vibe Sandbox
 
 Landing site for [begindevs.com](https://begindevs.com): an online lab to take beginners from zero to developer-team ready. Real tools, version control, agile, AI-inclusive—free for now.
 
