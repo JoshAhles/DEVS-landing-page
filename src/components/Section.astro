@@ -3,6 +3,7 @@ interface Props {
   id: string;
   dark?: boolean;
   narrow?: boolean;
+  wide?: boolean;
   extraTopPadding?: boolean;
   spacingVariant?: 'compact' | 'normal' | 'spacious' | 'extra';
   accentColor?: 'cyan' | 'green';
@@ -13,6 +14,7 @@ const {
   id, 
   dark = false, 
   narrow = false, 
+  wide = false,
   extraTopPadding = false,
   spacingVariant = 'normal',
   accentColor = 'cyan',
@@ -81,7 +83,7 @@ const accentRadials = {
   />
 
   <div
-    class:list={["mx-auto relative z-10", narrow ? "max-w-2xl" : "max-w-5xl"]}
+    class:list={["mx-auto relative z-10", narrow ? "max-w-2xl" : wide ? "max-w-[76rem]" : "max-w-5xl"]}
     data-animate
   >
     <slot />
