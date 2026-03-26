@@ -1,0 +1,114 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+---
+
+<BlogLayout
+  slug="first-code-review-guide"
+  title="How to Prepare for Your First Code Review (Junior Developer Guide)"
+  description="Step-by-step first code review guide for junior developers: prep your PR, respond to feedback, and build trust with your team."
+  published="March 2026"
+>
+  <p>
+    Your first code review can feel intimidating. That is normal. Most new developers worry they
+    will be judged, miss obvious issues, or respond poorly to comments. In practice, review is
+    less about perfection and more about iteration and communication.
+  </p>
+  <p>
+    This guide gives you a concrete checklist to prepare your first pull request and handle review
+    feedback like a teammate.
+  </p>
+
+  <h2>Before opening the PR</h2>
+  <h3>1) Keep scope tight</h3>
+  <p>
+    Small, focused PRs get better feedback and faster approvals. If your change mixes feature
+    work, refactors, and cleanup, split it when possible.
+  </p>
+
+  <h3>2) Run quality checks locally</h3>
+  <ul>
+    <li>Run tests relevant to your change</li>
+    <li>Run lint/type checks</li>
+    <li>Manually verify the main acceptance path and one edge case</li>
+  </ul>
+  <p>
+    Do not push basic failures to reviewers unless you are explicitly asking for help debugging.
+  </p>
+
+  <h3>3) Clean commit history</h3>
+  <p>
+    Commit messages should explain intent, not just “fix stuff.” Reviewers scan commit history to
+    understand how the implementation evolved.
+  </p>
+
+  <h2>How to write a PR description that helps reviewers</h2>
+  <p>
+    A strong PR description reduces back-and-forth and builds trust. Include:
+  </p>
+  <ul>
+    <li><strong>What changed:</strong> concise summary</li>
+    <li><strong>Why:</strong> ticket/problem context</li>
+    <li><strong>How tested:</strong> command outputs or validation steps</li>
+    <li><strong>Risk areas:</strong> what might break or need extra eyes</li>
+    <li><strong>Screenshots:</strong> for UI changes</li>
+  </ul>
+  <p>
+    Think of your PR description as a handoff note to busy teammates.
+  </p>
+
+  <h2>How to respond to review comments</h2>
+  <h3>1) Assume good intent</h3>
+  <p>
+    Comments are about improving the codebase, not attacking you. A defensive tone slows the
+    process and makes collaboration harder.
+  </p>
+
+  <h3>2) Acknowledge clearly</h3>
+  <p>
+    Use short responses that show you understood:
+  </p>
+  <ul>
+    <li>“Good catch — updated in latest commit.”</li>
+    <li>“Makes sense. I simplified this branch and added a test.”</li>
+    <li>“I considered that approach; chose X because Y. Open to changing if preferred.”</li>
+  </ul>
+
+  <h3>3) Push focused follow-up commits</h3>
+  <p>
+    Group related fixes together. Then post a short summary comment with what changed so reviewers
+    do not need to rediscover everything.
+  </p>
+
+  <h2>Common first-review mistakes</h2>
+  <ul>
+    <li>Opening a huge PR and expecting fast approval</li>
+    <li>Ignoring edge-case feedback because “main flow works”</li>
+    <li>Arguing every comment instead of prioritizing team conventions</li>
+    <li>Force-pushing without context and making diffs hard to follow</li>
+    <li>Waiting too long to ask clarifying questions</li>
+  </ul>
+
+  <h2>A simple first-code-review checklist</h2>
+  <ul>
+    <li>PR is focused on one task</li>
+    <li>Tests/lint/type checks pass</li>
+    <li>Description explains what/why/how-tested</li>
+    <li>Comments are acknowledged with clear follow-ups</li>
+    <li>Final diff is easy to review</li>
+  </ul>
+
+  <p>
+    Your first code review does not need to be perfect. It needs to show that you can collaborate,
+    iterate, and take ownership. Those are the signals teams care about most.
+  </p>
+
+  <h2>Next step: ship one review-ready PR this week</h2>
+  <p>
+    Use the checklist above on a small change and aim for a clean PR description, passing tests,
+    and thoughtful responses to feedback. If you want to rehearse this process repeatedly before
+    your first job, DEVS gives you a structured environment to do that.
+  </p>
+  <p>
+    <a href="/#notify">Join early access and practice your first review cycle</a>
+  </p>
+</BlogLayout>

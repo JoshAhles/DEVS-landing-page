@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const posts = [
+  {
+    href: "/blog/ai-use-during-learning",
+    title: "Should You Use AI While Learning to Code? A Practical Guide",
+    description:
+      "AI is already part of real engineering work. The skill gap is learning to review, validate, and defend what ships.",
+  },
+  {
+    href: "/blog/what-college-misses-in-developer-education",
+    title: "What College Doesn't Teach About Software Engineering",
+    description:
+      "Most students learn theory and algorithms but never practice the delivery loop: tickets, PRs, reviews, and sprint communication.",
+  },
+  {
+    href: "/blog/first-code-review-guide",
+    title: "How to Prepare for Your First Code Review",
+    description:
+      "A practical guide to preparing, opening, and iterating on your first pull request without panic.",
+  },
+];
+---
+
+<Layout
+  title="DEVS Blog — Code Reviews, PRs, and Team Workflow Guides"
+  description="Practical guides for junior developers: first code review, team workflows, and how to become team-ready beyond tutorials."
+>
+  <main id="main" class="px-6 py-28 md:py-36">
+    <section class="max-w-5xl mx-auto">
+      <span class="eyebrow">DEVS Blog</span>
+      <h1 class="mt-5 text-3xl sm:text-5xl font-bold tracking-tight text-white">
+        Practical guides for becoming team-ready
+      </h1>
+      <p class="mt-4 text-lg copy-muted max-w-3xl">
+        If you can write code but have not worked in a real team yet, start here.
+        These guides focus on pull requests, code reviews, sprint workflows, and
+        communication skills that hiring managers actually look for.
+      </p>
+
+      <div class="mt-12 grid gap-5">
+        {
+          posts.map((post) => (
+            <article class="surface-card p-6 sm:p-7">
+              <h2 class="text-xl sm:text-2xl font-semibold text-white leading-snug">
+                <a href={post.href} class="underline-offset-4 hover:underline">
+                  {post.title}
+                </a>
+              </h2>
+              <p class="mt-3 copy-muted text-base">{post.description}</p>
+              <a href={post.href} class="inline-flex mt-4 text-sm font-semibold text-[var(--color-accent)] hover:text-white transition-colors">
+                Read guide <span class="ml-1" aria-hidden="true">&rarr;</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,215 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  published: string;
+  updated?: string;
+}
+
+const { slug, title, description, published, updated } = Astro.props;
+const siteUrl = "https://begindevs.com";
+const articleUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const blogPosts = [
+  {
+    slug: "ai-use-during-learning",
+    href: "/blog/ai-use-during-learning",
+    title: "Should You Use AI While Learning to Code? A Practical Guide",
+  },
+  {
+    slug: "what-college-misses-in-developer-education",
+    href: "/blog/what-college-misses-in-developer-education",
+    title: "What College Doesn't Teach About Software Engineering",
+  },
+  {
+    slug: "first-code-review-guide",
+    href: "/blog/first-code-review-guide",
+    title: "How to Prepare for Your First Code Review",
+  },
+];
+const relatedPosts = blogPosts.filter((post) => post.slug !== slug);
+const articleJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: published,
+  dateModified: updated ?? published,
+  mainEntityOfPage: articleUrl,
+  author: {
+    "@type": "Person",
+    name: "Josh Ahles",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "DEVS",
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/images/DEVS-logo-transparent.png`,
+    },
+  },
+  isPartOf: {
+    "@type": "Blog",
+    name: "DEVS Blog",
+    url: `${siteUrl}/blog`,
+  },
+});
+---
+
+<Layout title={title} description={description}>
+  <main id="main" class="px-6 py-28 md:py-36">
+    <article class="max-w-3xl mx-auto blog-prose">
+      <nav class="text-xs copy-subtle mb-6">
+        <a href="/blog" class="underline hover:text-white transition-colors">DEVS Blog</a>
+      </nav>
+      <header>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">{title}</h1>
+        <p class="meta mt-3">
+          Published {published}{updated ? ` · Updated ${updated}` : ""}
+        </p>
+      </header>
+      <slot />
+
+      <section class="related-guides mt-12">
+        <h2 class="text-xl font-semibold text-white">Related guides</h2>
+        <ul class="mt-4 related-list">
+          {
+            relatedPosts.map((post) => (
+              <li>
+                <a href={post.href}>{post.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="signup-cta surface-card mt-12 p-6 sm:p-8">
+        <h2 class="text-xl font-semibold text-white">Practice this for real in DEVS</h2>
+        <p class="mt-3 copy-muted">
+          DEVS is a simulated engineering environment for code reviews, PRs, sprint workflows, and team communication.
+          Join early access and get launch updates.
+        </p>
+        <a href="/#notify" class="btn-primary cta-glow inline-flex mt-5">
+          Join early access <span aria-hidden="true">&rarr;</span>
+        </a>
+      </section>
+    </article>
+  </main>
+  <script type="application/ld+json" set:html={articleJsonLd} />
+</Layout>
+
+<style>
+  .blog-prose {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  .blog-prose :global(> *:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  .blog-prose :global(> * + *) {
+    margin-top: 1rem;
+  }
+
+  .blog-prose :global(h2) {
+    margin-top: 2.8rem;
+    margin-bottom: 0.95rem;
+    padding-top: 0.2rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .blog-prose :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 0.55rem;
+    color: var(--color-text-soft);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .blog-prose :global(p) {
+    margin: 0;
+    font-size: 1rem;
+    max-width: 70ch;
+  }
+
+  .blog-prose :global(ul) {
+    margin: 0.95rem 0 1.25rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+    max-width: 70ch;
+  }
+
+  .blog-prose :global(ol) {
+    margin: 0.95rem 0 1.25rem;
+    padding-left: 1.5rem;
+    list-style: decimal;
+    max-width: 70ch;
+  }
+
+  .blog-prose :global(li) {
+    margin-bottom: 0.6rem;
+    padding-left: 0.2rem;
+    line-height: 1.7;
+  }
+
+  .blog-prose :global(li > p) {
+    margin: 0;
+  }
+
+  .blog-prose :global(strong) {
+    color: white;
+    font-weight: 650;
+  }
+
+  .blog-prose :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--color-border-subtle);
+    margin: 2.2rem 0;
+  }
+
+  .blog-prose :global(a:not(.btn-primary)) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .blog-prose :global(a:not(.btn-primary):hover) {
+    color: white;
+  }
+
+  .signup-cta .btn-primary,
+  .signup-cta .btn-primary:hover,
+  .signup-cta .btn-primary:focus-visible,
+  .signup-cta .btn-primary:visited {
+    color: #031224;
+    text-decoration: none;
+  }
+
+  .related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .related-list a {
+    display: inline-flex;
+    font-size: 0.98rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .meta {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+</style>
