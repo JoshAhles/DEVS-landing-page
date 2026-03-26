@@ -35,7 +35,15 @@
 
   .logo-img {
     display: block;
+    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(45, 212, 255, 0.38));
+    transition: filter 180ms ease;
   }
+
+  .logo-block:hover .logo-img,
+  .logo-block:focus-visible .logo-img {
+    filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(45, 212, 255, 0.52));
+  }
+
   .logo-subtitle .logo-letter {
     color: #6ee76e;
     opacity: 0.9;
