@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://begindevs.com/sitemap-index.xml

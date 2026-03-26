@@ -13,6 +13,38 @@ import Header from "../components/Header.astro";
 
 const siteUrl = "https://begindevs.com";
 const ogImage = `${siteUrl}/og-image.png`;
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const isHomePage = Astro.url.pathname === "/";
+
+const organizationJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "DEVS",
+  url: siteUrl,
+  logo: `${siteUrl}/images/DEVS-logo-transparent.png`,
+  sameAs: [],
+});
+
+const webSiteJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "DEVS",
+  url: siteUrl,
+  description,
+});
+
+const webPageJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  url: currentUrl,
+  description,
+  isPartOf: {
+    "@type": "WebSite",
+    url: siteUrl,
+    name: "DEVS",
+  },
+});
 ---
 
 <!doctype html>
@@ -21,8 +53,9 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#040816" />
     <meta name="color-scheme" content="dark" />
-    <link rel="canonical" href={siteUrl} />
+    <link rel="canonical" href={currentUrl} />
     <link rel="icon" id="favicon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,16 +66,28 @@ const ogImage = `${siteUrl}/og-image.png`;
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:site_name" content="DEVS" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={currentUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="DEVS simulated software team environment preview" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@begindevs" />
+    <meta name="twitter:creator" content="@begindevs" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="DEVS simulated software team environment preview" />
+
+    <script type="application/ld+json" set:html={organizationJsonLd} />
+    <script type="application/ld+json" set:html={webSiteJsonLd} />
+    <script type="application/ld+json" set:html={webPageJsonLd} />
 
     <title>{title}</title>
   </head>
@@ -54,156 +99,162 @@ const ogImage = `${siteUrl}/og-image.png`;
     >
     <Header />
     <slot />
-    <script>
-      import "../scripts/animations.js";
-    </script>
-    <script>
-      (function () {
-        const CURSOR = "\u258C"; // left half block (thicker than │, thinner than █)
-        const fullTitle = document.title;
-        const suffix = fullTitle.startsWith("DEVS") ? fullTitle.slice(4) : "";
+    {
+      isHomePage && (
+        <>
+          <script>
+            import "../scripts/animations.js";
+          </script>
+          <script>
+            (function () {
+              const CURSOR = "\u258C"; // left half block (thicker than │, thinner than █)
+              const fullTitle = document.title;
+              const suffix = fullTitle.startsWith("DEVS") ? fullTitle.slice(4) : "";
 
-        const ZWS = "\u200B"; // zero-width space (keeps title non-empty so browser doesn't show host)
-        function setTitle(prefix, showCursor) {
-          const p = prefix || ZWS;
-          document.title = p + (showCursor ? CURSOR : "") + suffix;
-        }
+              const ZWS = "\u200B"; // zero-width space (keeps title non-empty so browser doesn't show host)
+              function setTitle(prefix, showCursor) {
+                const p = prefix || ZWS;
+                document.title = p + (showCursor ? CURSOR : "") + suffix;
+              }
 
-        const SP = "\u2009"; // thin space
-        const typeSteps = ["D", "D" + SP + "E", "D" + SP + "E" + SP + "V", "D" + SP + "E" + SP + "V" + SP + "S"];
-        const backSteps = ["D" + SP + "E" + SP + "V" + SP + "S", "D" + SP + "E" + SP + "V", "D" + SP + "E", "D", ""];
-        const typeDelay = 580;
-        const backDelay = 420;
-        const blinkIntervalMs = 530;
-        const initialBlinkDuration = 1500; // blink cursor alone before typing
-        const hangDuration = 2800; // blink on DEVS before backspace
-        const pauseBeforeRetype = 600;
-        let stepIndex = 0;
-        let blinkId = null;
-        const fullStr = typeSteps[typeSteps.length - 1];
+              const SP = "\u2009"; // thin space
+              const typeSteps = ["D", "D" + SP + "E", "D" + SP + "E" + SP + "V", "D" + SP + "E" + SP + "V" + SP + "S"];
+              const backSteps = ["D" + SP + "E" + SP + "V" + SP + "S", "D" + SP + "E" + SP + "V", "D" + SP + "E", "D", ""];
+              const typeDelay = 580;
+              const backDelay = 420;
+              const blinkIntervalMs = 530;
+              const initialBlinkDuration = 1500; // blink cursor alone before typing
+              const hangDuration = 2800; // blink on DEVS before backspace
+              const pauseBeforeRetype = 600;
+              let stepIndex = 0;
+              let blinkId = null;
+              const fullStr = typeSteps[typeSteps.length - 1];
 
-        function runCycle() {
-          if (blinkId) clearInterval(blinkId);
-          blinkId = null;
-          stepIndex = 0;
-
-          function startTyping() {
-            if (document.hidden) {
-              setTimeout(runCycle, 2000);
-              return;
-            }
-            stepIndex = 0;
-            typingNext();
-          }
-
-          function typingNext() {
-            if (document.hidden) {
-              setTimeout(runCycle, 2000);
-              return;
-            }
-            if (stepIndex < typeSteps.length) {
-              setTitle(typeSteps[stepIndex], true);
-              stepIndex++;
-              setTimeout(typingNext, typeDelay);
-            } else {
-              let blinkOn = true;
-              blinkId = setInterval(function () {
-                if (document.hidden) return;
-                blinkOn = !blinkOn;
-                setTitle(fullStr, blinkOn);
-              }, blinkIntervalMs);
-              setTimeout(function () {
+              function runCycle() {
                 if (blinkId) clearInterval(blinkId);
                 blinkId = null;
-                backspaceNext();
-              }, hangDuration);
-            }
-          }
+                stepIndex = 0;
 
-          function backspaceNext() {
-            if (document.hidden) {
-              setTimeout(runCycle, 2000);
-              return;
-            }
-            const i = stepIndex - typeSteps.length;
-            if (i < backSteps.length) {
-              setTitle(backSteps[i], true);
-              stepIndex++;
-              setTimeout(backspaceNext, backDelay);
-            } else {
-              setTimeout(function () {
-                if (document.hidden) return;
-                runCycle();
-              }, pauseBeforeRetype);
-            }
-          }
+                function startTyping() {
+                  if (document.hidden) {
+                    setTimeout(runCycle, 2000);
+                    return;
+                  }
+                  stepIndex = 0;
+                  typingNext();
+                }
 
-          // Blink cursor with no letters first
-          let blinkOn = true;
-          setTitle("", true);
-          blinkId = setInterval(function () {
-            if (document.hidden) return;
-            blinkOn = !blinkOn;
-            setTitle("", blinkOn);
-          }, blinkIntervalMs);
-          setTimeout(function () {
-            if (blinkId) clearInterval(blinkId);
-            blinkId = null;
-            startTyping();
-          }, initialBlinkDuration);
-        }
+                function typingNext() {
+                  if (document.hidden) {
+                    setTimeout(runCycle, 2000);
+                    return;
+                  }
+                  if (stepIndex < typeSteps.length) {
+                    setTitle(typeSteps[stepIndex], true);
+                    stepIndex++;
+                    setTimeout(typingNext, typeDelay);
+                  } else {
+                    let blinkOn = true;
+                    blinkId = setInterval(function () {
+                      if (document.hidden) return;
+                      blinkOn = !blinkOn;
+                      setTitle(fullStr, blinkOn);
+                    }, blinkIntervalMs);
+                    setTimeout(function () {
+                      if (blinkId) clearInterval(blinkId);
+                      blinkId = null;
+                      backspaceNext();
+                    }, hangDuration);
+                  }
+                }
 
-        runCycle();
+                function backspaceNext() {
+                  if (document.hidden) {
+                    setTimeout(runCycle, 2000);
+                    return;
+                  }
+                  const i = stepIndex - typeSteps.length;
+                  if (i < backSteps.length) {
+                    setTitle(backSteps[i], true);
+                    stepIndex++;
+                    setTimeout(backspaceNext, backDelay);
+                  } else {
+                    setTimeout(function () {
+                      if (document.hidden) return;
+                      runCycle();
+                    }, pauseBeforeRetype);
+                  }
+                }
 
-        document.addEventListener("visibilitychange", function () {
-          if (document.hidden) {
-            if (blinkId) clearInterval(blinkId);
-            blinkId = null;
-            document.title = "DEVS";
-          }
-        });
-      })();
-    </script>
-    <script>
-      (function () {
-        const size = 32;
-        const canvas = document.createElement("canvas");
-        canvas.width = size;
-        canvas.height = size;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
+                // Blink cursor with no letters first
+                let blinkOn = true;
+                setTitle("", true);
+                blinkId = setInterval(function () {
+                  if (document.hidden) return;
+                  blinkOn = !blinkOn;
+                  setTitle("", blinkOn);
+                }, blinkIntervalMs);
+                setTimeout(function () {
+                  if (blinkId) clearInterval(blinkId);
+                  blinkId = null;
+                  startTyping();
+                }, initialBlinkDuration);
+              }
 
-        const link = document.getElementById("favicon");
-        if (!link) return;
+              runCycle();
 
-        let hue = 0;
-        let lastUpdate = 0;
-        const interval = 100; // ~10 FPS for smooth but lightweight
+              document.addEventListener("visibilitychange", function () {
+                if (document.hidden) {
+                  if (blinkId) clearInterval(blinkId);
+                  blinkId = null;
+                  document.title = "DEVS";
+                }
+              });
+            })();
+          </script>
+          <script>
+            (function () {
+              const size = 32;
+              const canvas = document.createElement("canvas");
+              canvas.width = size;
+              canvas.height = size;
+              const ctx = canvas.getContext("2d");
+              if (!ctx) return;
 
-        function draw() {
-          ctx.clearRect(0, 0, size, size);
-          ctx.font = "bold 18px ui-monospace, monospace";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
-          ctx.fillText("</>", size / 2, size / 2 + 1);
-        }
+              const link = document.getElementById("favicon");
+              if (!link) return;
 
-        function tick(now) {
-          if (document.hidden) {
-            requestAnimationFrame(tick);
-            return;
-          }
-          if (now - lastUpdate >= interval) {
-            hue = (hue + 2) % 360;
-            lastUpdate = now;
-            draw();
-            link.href = canvas.toDataURL("image/png");
-          }
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      })();
-    </script>
+              let hue = 0;
+              let lastUpdate = 0;
+              const interval = 100; // ~10 FPS for smooth but lightweight
+
+              function draw() {
+                ctx.clearRect(0, 0, size, size);
+                ctx.font = "bold 18px ui-monospace, monospace";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
+                ctx.fillText("</>", size / 2, size / 2 + 1);
+              }
+
+              function tick(now) {
+                if (document.hidden) {
+                  requestAnimationFrame(tick);
+                  return;
+                }
+                if (now - lastUpdate >= interval) {
+                  hue = (hue + 2) % 360;
+                  lastUpdate = now;
+                  draw();
+                  link.href = canvas.toDataURL("image/png");
+                }
+                requestAnimationFrame(tick);
+              }
+              requestAnimationFrame(tick);
+            })();
+          </script>
+        </>
+      )
+    }
   </body>
 </html>

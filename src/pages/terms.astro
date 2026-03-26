@@ -123,7 +123,13 @@ import Layout from "../layouts/Layout.astro";
       </p>
 
       <div class="back-link">
-        <a href="/">&larr; Back to DEVS</a>
+        <nav class="legal-links" aria-label="Legal page links">
+          <a href="/">&larr; Back to DEVS</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms" aria-current="page">Terms of Service</a>
+          <span aria-hidden="true">·</span>
+          <a href="/privacy">Privacy Policy</a>
+        </nav>
       </div>
     </article>
   </main>
@@ -186,5 +192,15 @@ import Layout from "../layouts/Layout.astro";
   }
   .back-link a:hover {
     text-decoration: underline;
+  }
+  .legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .legal-links span {
+    opacity: 0.45;
+    color: var(--color-text-muted);
   }
 </style>
