@@ -1,0 +1,15 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-[var(--color-line)] px-6 py-10">
+  <div class="mx-auto flex max-w-[72rem] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <p class="font-mono text-xs copy-subtle">© {year} DEVS · The team simulation for developers who can code but haven't shipped with a team yet.</p>
+    <nav class="flex gap-5 font-mono text-xs copy-subtle" aria-label="Footer">
+      <a href="/blog" class="hover:text-[var(--color-ink)]">Blog</a>
+      <a href="/rss.xml" class="hover:text-[var(--color-ink)]">RSS</a>
+      <a href="/privacy" class="hover:text-[var(--color-ink)]">Privacy</a>
+      <a href="/terms" class="hover:text-[var(--color-ink)]">Terms</a>
+      <a href="https://github.com/JoshAhles" rel="noopener" target="_blank" class="hover:text-[var(--color-ink)]">GitHub</a>
+    </nav>
+  </div>
+</footer>

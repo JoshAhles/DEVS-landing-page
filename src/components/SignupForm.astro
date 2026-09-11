@@ -1,0 +1,24 @@
+---
+interface Props { source: "hero" | "footer"; id: string }
+const { source, id } = Astro.props;
+import { FORMSPREE_ENDPOINT } from "../lib/formspree.js";
+---
+<form id={id} data-signup data-source={source} action={FORMSPREE_ENDPOINT} method="POST" class="w-full max-w-md" novalidate>
+  <label for={`${id}-email`} class="sr-only">Email address</label>
+  <div class="flex flex-col gap-2 sm:flex-row">
+    <input id={`${id}-email`} name="email" type="email" required autocomplete="email" inputmode="email"
+      placeholder="you@example.com" class="input" aria-describedby={`${id}-msg`} />
+    <input type="hidden" name="source" value={source} />
+    <input type="hidden" name="_subject" value="DEVS early access" />
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+    <button type="submit" class="btn-primary whitespace-nowrap" data-cta={`form-${source}`}>
+      <span data-label>Save my spot</span>
+    </button>
+  </div>
+  <p id={`${id}-msg`} class="mt-2 min-h-[1.25rem] font-mono text-xs copy-subtle" data-msg aria-live="polite">
+    Free during early access · no credit card · one email when labs open
+  </p>
+</form>
+<script>
+  import "../scripts/signup-form.js";
+</script>

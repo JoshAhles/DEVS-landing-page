@@ -1,0 +1,20 @@
+# DEVS (begindevs.com)
+
+> DEVS is a simulated engineering team where developers who can already code practice pull requests, code review, and sprint work before their first job. Free during early access; join the list at https://begindevs.com/#hero-form.
+
+## Who it's for
+Bootcamp graduates, self-taught developers, CS students, and developers in their first role who have built projects alone but never shipped on a team.
+
+## What you practice
+Git and pull requests, code review, sprint execution, testing and debugging, working in existing codebases, AI-assisted development with accountability.
+
+## Pages
+- https://begindevs.com/ : landing page and early-access signup
+- https://begindevs.com/blog : articles
+- https://begindevs.com/blog/first-code-review-guide : How to Prepare for Your First Code Review
+- https://begindevs.com/blog/what-college-misses-in-developer-education : What College Doesn't Teach About Software Engineering
+- https://begindevs.com/blog/ai-use-during-learning : Should You Use AI While Learning to Code?
+- https://begindevs.com/rss.xml : RSS feed
+
+## Founder
+Josh Ahles — https://github.com/JoshAhles

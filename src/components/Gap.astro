@@ -1,0 +1,39 @@
+---
+const rows = [
+  ["ctx", "your first dev job, day one"],
+  ["del", "build a project alone, from an empty file"],
+  ["add", "change a codebase forty people already touched"],
+  ["del", "submit it and move on"],
+  ["add", "open a pull request, get review, revise, merge"],
+  ["del", "finish whenever"],
+  ["add", "estimate it, flag blockers, ship inside the sprint"],
+  ["del", "avoid AI so you learn"],
+  ["add", "use AI, then review and own every line it wrote"],
+  ["ctx", "…and you can practice all of it before you're hired"],
+];
+let ln = 11;
+---
+<div class="grid gap-10 lg:grid-cols-12 lg:items-center">
+  <div class="lg:col-span-5">
+    <p class="eyebrow">git diff courses..jobs</p>
+    <h2 class="section-title mt-5" data-decode>Tutorials teach you to code alone. Jobs are a team sport.</h2>
+    <p class="section-lede">The step between finishing a course and starting a job. If you can build a small project, you can start.</p>
+  </div>
+  <div class="lg:col-span-7">
+    <div class="diff elev elev-stack" data-reveal>
+      <div class="diff-head">
+        <span class="dots"><i style="background:#f85149"></i><i style="background:#d29922"></i><i style="background:#3fb950"></i></span>
+        <span>what-changes-when-you-join-a-team.diff</span>
+        <span class="ml-auto text-[var(--color-merge)]">+4</span><span class="text-[var(--color-danger)]">−4</span>
+      </div>
+      <div class="diff-hunk">@@ courses → jobs @@</div>
+      {rows.map(([kind, txt]) => (
+        <div class:list={["diff-row", kind]} data-reveal>
+          <span class="ln">{ln++}</span>
+          <span class="sign">{kind === "add" ? "+" : kind === "del" ? "−" : " "}</span>
+          <span class="txt">{txt}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

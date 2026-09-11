@@ -1,79 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import TrustSection from "../components/TrustSection.astro";
 import Section from "../components/Section.astro";
-import ValueProps from "../components/ValueProps.astro";
-import NotVibeSection from "../components/NotVibeSection.astro";
-import WhyDEVS from "../components/WhyDEVS.astro";
-import FeaturesGrid from "../components/FeaturesGrid.astro";
-import PortfolioShowcase from "../components/PortfolioShowcase.astro";
-import ProcessTimeline from "../components/ProcessTimeline.astro";
-import Testimonials from "../components/Testimonials.astro";
-import LabTeaserEnhanced from "../components/LabTeaserEnhanced.astro";
-import PricingEnhanced from "../components/PricingEnhanced.astro";
-import CtaSection from "../components/CtaSection.astro";
+import Gap from "../components/Gap.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import FounderNote from "../components/FounderNote.astro";
+import Faq from "../components/Faq.astro";
+import FinalCta from "../components/FinalCta.astro";
+import Footer from "../components/Footer.astro";
 ---
-
-<Layout
-  title="DEVS — Practice Code Review, Pull Requests, and Sprint Workflows"
->
+<Layout title="DEVS — Practice Pull Requests, Code Review, and Sprints on a Simulated Team">
   <main id="main">
     <Hero />
-
-    <!-- 1. Who this is for — immediate audience identification -->
-    <Section id="who" extraTopPadding spacingVariant="spacious" accentColor="cyan" bgVariant="gradient">
-      <TrustSection />
-    </Section>
-
-    <!-- 2. What makes DEVS different — the flight simulator pitch -->
-    <Section id="difference" dark spacingVariant="normal" accentColor="green" bgVariant="dark">
-      <ValueProps />
-    </Section>
-
-    <!-- 3. AI/vibe coding stance — differentiation + objection handling early -->
-    <Section id="approach" dark spacingVariant="normal" accentColor="cyan" bgVariant="dark">
-      <NotVibeSection />
-    </Section>
-
-    <!-- 4. The delivery loop — show how it works -->
-    <Section id="how-it-works" spacingVariant="spacious" accentColor="green" bgVariant="light">
-      <ProcessTimeline />
-    </Section>
-
-    <!-- 5. The environment — visual proof of the product -->
-    <Section id="lab" spacingVariant="normal" accentColor="cyan" bgVariant="gradient">
-      <LabTeaserEnhanced />
-    </Section>
-
-    <!-- 6. What you'll practice — specific skills -->
-    <Section id="skills" spacingVariant="compact" accentColor="green" bgVariant="light">
-      <FeaturesGrid />
-    </Section>
-
-    <!-- 7. Founder story — trust and credibility -->
-    <Section id="why-devs" dark spacingVariant="normal" accentColor="cyan" bgVariant="gradient">
-      <WhyDEVS />
-    </Section>
-
-    <!-- 8. Outcomes and delivery record — what you walk away with -->
-    <Section id="outcomes" spacingVariant="spacious" accentColor="green" bgVariant="light">
-      <PortfolioShowcase />
-    </Section>
-
-    <!-- 9. Outcome proof — what DEVS trains you to do -->
-    <Section id="proof" dark spacingVariant="normal" accentColor="cyan" bgVariant="dark">
-      <Testimonials />
-    </Section>
-
-    <!-- 10. Pricing — free/pro split -->
-    <Section id="pricing" dark wide spacingVariant="normal" accentColor="green" bgVariant="dark">
-      <PricingEnhanced />
-    </Section>
-
-    <!-- 11. Final CTA -->
-    <Section id="cta-section" dark spacingVariant="extra" accentColor="cyan" bgVariant="light">
-      <CtaSection />
-    </Section>
+    <Section id="gap"><Gap /></Section>
+    <Section id="how" wide><HowItWorks /></Section>
+    <Section id="why"><FounderNote /></Section>
+    <Section id="faq"><Faq /></Section>
+    <Section id="join"><FinalCta /></Section>
   </main>
+  <Footer />
 </Layout>

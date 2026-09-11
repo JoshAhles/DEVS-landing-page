@@ -1,0 +1,81 @@
+---
+---
+    <div class="relative rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-0)] overflow-hidden">
+      <!-- Window chrome -->
+      <div class="flex items-center gap-2 px-4 py-2.5 border-b border-[var(--color-line)] bg-[var(--color-bg-1)]">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
+        <span class="ml-3 text-[0.65rem] font-mono copy-subtle tracking-wide">DEVS — Sprint 4 / Lab 12</span>
+        <span class="ml-auto flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-merge)] animate-pulse"></span>
+          <span class="text-[0.58rem] text-[var(--color-merge)] font-medium font-mono">connected</span>
+        </span>
+      </div>
+
+      <!-- Workspace panels -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 min-h-[220px] sm:min-h-[260px]">
+
+        <!-- Left: Task card -->
+        <div class="sm:col-span-4 p-4 border-b sm:border-b-0 sm:border-r border-[var(--color-line)] hero-panel" data-hero-panel="task">
+          <p class="text-[0.6rem] uppercase tracking-widest text-[var(--color-accent)] font-semibold mb-2">Current task</p>
+          <p class="text-sm font-semibold text-[var(--color-ink)] leading-snug">Add zip code validation to checkout form</p>
+          <div class="mt-3 space-y-1.5">
+            <p class="text-[0.68rem] copy-subtle flex items-start gap-1.5"><span class="text-[var(--color-merge)] mt-px">●</span> Empty zip shows required error</p>
+            <p class="text-[0.68rem] copy-subtle flex items-start gap-1.5"><span class="text-[var(--color-merge)] mt-px">●</span> Invalid zip blocks submit</p>
+            <p class="text-[0.68rem] copy-subtle flex items-start gap-1.5"><span class="text-[var(--color-merge)] mt-px">●</span> Tests updated, PR opened</p>
+          </div>
+          <div class="mt-3 flex gap-1.5">
+            <span class="text-[0.58rem] px-1.5 py-0.5 rounded bg-[var(--color-accent)]/10 text-[var(--color-accent)] border border-[var(--color-accent)]/20 font-medium">Checkout team</span>
+            <span class="text-[0.58rem] px-1.5 py-0.5 rounded bg-[var(--color-accent)]/10 text-[var(--color-accent)] border border-[var(--color-accent)]/20 font-medium">Medium</span>
+          </div>
+        </div>
+
+        <!-- Center: Terminal -->
+        <div class="sm:col-span-5 p-4 border-b sm:border-b-0 sm:border-r border-[var(--color-line)] font-mono text-[0.72rem] hero-panel" data-hero-panel="terminal">
+          <p class="text-[0.6rem] uppercase tracking-widest copy-subtle font-semibold font-sans mb-2">Terminal</p>
+          <div class="space-y-1 copy-subtle">
+            <p><span class="text-[var(--color-accent)]">$</span> git checkout -b fix/zip-validation</p>
+            <p class="text-[var(--color-merge)]">Switched to new branch 'fix/zip-validation'</p>
+            <p><span class="text-[var(--color-accent)]">$</span> npm run test -- checkout</p>
+            <p class="text-[var(--color-merge)]">✓ 4 tests passed</p>
+            <p><span class="text-[var(--color-accent)]">$</span> git push origin fix/zip-validation</p>
+            <p class="copy-subtle">remote: Create PR → <span class="text-[var(--color-accent)] underline">devs/pr/47</span></p>
+          </div>
+        </div>
+
+        <!-- Right: PR Review -->
+        <div class="sm:col-span-3 p-4 hero-panel" data-hero-panel="review">
+          <p class="text-[0.6rem] uppercase tracking-widest copy-subtle font-semibold mb-2">PR Review</p>
+          <div class="space-y-2.5">
+            <div class="rounded-lg bg-[var(--color-bg-2)] p-2">
+              <p class="text-[0.62rem] font-semibold text-[var(--color-accent)]">@alex_sr</p>
+              <p class="text-[0.66rem] copy-subtle mt-0.5 leading-relaxed">Clean approach. Can you add a test for the empty-string edge case?</p>
+            </div>
+            <div class="rounded-lg bg-[var(--color-bg-2)] p-2">
+              <p class="text-[0.62rem] font-semibold text-[var(--color-accent)]">@qa_maria</p>
+              <p class="text-[0.66rem] copy-subtle mt-0.5 leading-relaxed">What happens if the user pastes a zip with spaces?</p>
+            </div>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
+              <p class="text-[0.6rem] text-[var(--color-accent)] font-medium">Changes requested</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Status bar -->
+      <div class="flex items-center justify-between px-4 py-1.5 border-t border-[var(--color-line)] bg-[var(--color-bg-1)]">
+        <div class="flex items-center gap-3">
+          <span class="text-[0.56rem] font-mono copy-subtle">Sprint 4 — Day 3 of 10</span>
+          <span class="text-[0.56rem] font-mono text-[var(--color-accent)]">3/5 tasks done</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-20 h-1 rounded-full bg-[var(--color-bg-2)] overflow-hidden">
+            <div class="h-full w-3/5 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-merge)] sprint-progress"></div>
+          </div>
+          <span class="text-[0.56rem] font-mono text-[var(--color-merge)]">60%</span>
+        </div>
+      </div>
+    </div>

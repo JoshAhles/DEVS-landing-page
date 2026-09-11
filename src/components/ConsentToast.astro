@@ -1,0 +1,25 @@
+---
+---
+<div id="consent-toast" hidden class="fixed bottom-4 left-4 z-50 max-w-sm rounded-lg border border-[var(--color-line-strong)] bg-[var(--color-bg-1)] p-4 text-sm shadow-xl" role="dialog" aria-label="Analytics consent">
+  <p class="copy-muted">We use anonymous analytics to see which parts of this page work. Okay with you?</p>
+  <div class="mt-3 flex gap-2">
+    <button class="btn-primary !py-2 !px-3 text-xs" data-consent="granted">Allow</button>
+    <button class="btn-ghost !py-2 !px-3 text-xs" data-consent="denied">No thanks</button>
+  </div>
+</div>
+<script>
+  import { needsConsentPrompt, readConsent, saveConsent } from "../lib/analytics.js";
+  const el = document.getElementById("consent-toast");
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  if (el && !readConsent() && needsConsentPrompt(tz)) {
+    el.hidden = false;
+    el.querySelectorAll("[data-consent]").forEach((b) =>
+      b.addEventListener("click", () => {
+        const v = b.dataset.consent;
+        saveConsent(v);
+        if (typeof window.gtag === "function") window.gtag("consent", "update", { analytics_storage: v });
+        el.hidden = true;
+      }),
+    );
+  }
+</script>

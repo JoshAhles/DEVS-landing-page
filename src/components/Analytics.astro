@@ -1,0 +1,21 @@
+---
+import { EEA_UK_REGIONS } from "../lib/analytics.js";
+const id = import.meta.env.PUBLIC_GA_ID;
+const regions = JSON.stringify(EEA_UK_REGIONS);
+const inline = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent','default',{ analytics_storage:'denied', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied', region:${regions}, wait_for_update: 500 });
+gtag('consent','default',{ analytics_storage:'granted', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied' });
+var stored = null; try { stored = localStorage.getItem('devs.consent'); } catch(e){}
+if (stored) gtag('consent','update',{ analytics_storage: stored });
+gtag('js', new Date());
+gtag('config','${id}',{ anonymize_ip:true });
+`;
+---
+{id && (
+  <>
+    <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
+    <script type="text/partytown" set:html={inline} />
+  </>
+)}

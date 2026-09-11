@@ -1,96 +1,16 @@
 ---
 ---
-
-<header id="site-header" class="sticky top-0 z-40 backdrop-blur-md bg-[linear-gradient(180deg,rgba(4,8,22,0.9)_0%,rgba(4,8,22,0.7)_100%)] border-b border-[var(--color-border-subtle)] transition-shadow duration-300">
-  <div class="max-w-5xl mx-auto px-1 py-4 sm:px-6 flex items-center justify-between">
-    <a
-      href="/"
-      class="logo-block group flex flex-col items-end leading-tight transition-colors"
-      aria-label="DEVS — Developer Engineering and Vibe Sandbox"
-    >
-      <img
-        src="/images/DEVS-logo-transparent.png"
-        alt="DEVS"
-        class="logo-img h-12 w-auto object-contain"
-        width="180"
-        height="48"
-      />
-      <span class="logo-subtitle text-[0.55rem] font-bold tracking-[0.08em] text-[var(--color-text-muted)] mt-0.5"><span class="logo-letter">D</span>eveloper <span class="logo-letter">E</span>ngineering & <span class="logo-letter">V</span>ibe <span class="logo-letter">S</span>andbox</span>
+<header id="site-header" class="sticky top-0 z-40 border-b border-[var(--color-line)] bg-[var(--color-bg-0)]/85 backdrop-blur">
+  <div class="mx-auto flex max-w-[72rem] items-center justify-between px-6 py-3">
+    <a href="/" class="flex items-center gap-3" aria-label="DEVS home">
+      <span class="font-mono text-lg font-medium leading-none"><span class="text-[var(--color-merge)]">~/</span>devs<span class="blink text-[var(--color-accent)]">_</span></span>
+      <span class="hidden font-mono text-xs text-[var(--color-ink-subtle)] sm:inline">a practice team for new developers</span>
     </a>
-
-    <a href="/#notify" class="header-cta inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg border border-[var(--color-accent)]/50 bg-[var(--color-accent-ghost)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-subtle)] transition-all">
-      Join early access <span aria-hidden="true">&rarr;</span>
-    </a>
+    <nav class="flex items-center gap-5" aria-label="Primary">
+      <a href="/#how" class="hidden text-sm copy-muted hover:text-[var(--color-ink)] md:inline">How it works</a>
+      <a href="/#faq" class="hidden text-sm copy-muted hover:text-[var(--color-ink)] md:inline">FAQ</a>
+      <a href="/blog" class="hidden text-sm copy-muted hover:text-[var(--color-ink)] md:inline">Blog</a>
+      <a href="/#hero-form" class="btn-primary !py-2.5 !px-4 text-sm" data-cta="header">Save my spot</a>
+    </nav>
   </div>
 </header>
-
-<style>
-  header {
-    animation: slideDownIn 400ms ease;
-  }
-
-  header.is-scrolled {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-  }
-
-  .logo-img {
-    display: block;
-    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(45, 212, 255, 0.38));
-    transition: filter 180ms ease;
-  }
-
-  .logo-block:hover .logo-img,
-  .logo-block:focus-visible .logo-img {
-    filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(45, 212, 255, 0.52));
-  }
-
-  .logo-subtitle .logo-letter {
-    color: #6ee76e;
-    opacity: 0.9;
-    text-shadow: 0 0 4px rgba(110, 231, 110, 0.4);
-  }
-  .logo-block:hover .logo-subtitle {
-    color: var(--color-text-soft);
-  }
-  .logo-block:focus-visible .logo-subtitle {
-    color: var(--color-text-soft);
-  }
-
-  .header-cta,
-  .header-cta:visited {
-    color: var(--color-accent);
-  }
-
-  .header-cta:hover,
-  .header-cta:focus-visible {
-    color: var(--color-accent-hover);
-  }
-
-  @keyframes slideDownIn {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    header {
-      animation: none;
-    }
-  }
-</style>
-
-<script>
-  const header = document.getElementById("site-header");
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 8);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
-</script>
